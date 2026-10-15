@@ -1,0 +1,96 @@
+<section class="page-hero" aria-labelledby="page-title">
+  {{vinyl:vinyl--spin}}
+  <div class="container page-hero__content">
+    {{breadcrumb}}
+    <span class="eyebrow">Contatti</span>
+    <h1 id="page-title">Parliamone <span class="serif">insieme.</span></h1>
+    <p class="lead">Per informazioni sull'associazione e sul tesseramento scrivi a <a href="mailto:info@symphonyfactory.it">info@<wbr>symphonyfactory.it</a>. Per eventi e serate musicali chiama Maurizia.</p>
+  </div>
+</section>
+
+<section class="section section--light" aria-labelledby="canali-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow reveal">Canali diretti</span>
+      <h2 class="h2 reveal" id="canali-title">Scegli <span class="serif">il canale</span></h2>
+    </div>
+    <div class="contact-cards">
+      <article class="contact-card reveal">
+        <svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>
+        <h3>Informazioni</h3>
+        <p>Chi siamo, cosa facciamo, tesseramento e donazioni.</p>
+        <a href="mailto:info@symphonyfactory.it">info@<wbr>symphonyfactory.it</a>
+      </article>
+      <article class="contact-card reveal" style="--d:.06s">
+        <svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>
+        <h3>Eventi e serate</h3>
+        <p>Per creare eventi e serate musicali contatta Maurizia.</p>
+        <a href="tel:+393661824404">366 182 4404</a>
+        <a href="mailto:maurizia@symphonyfactory.it">maurizia@<wbr>symphonyfactory.it</a>
+      </article>
+      <article class="contact-card reveal" style="--d:.12s">
+        <svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg>
+        <h3>Social</h3>
+        <p>Segui le nostre attività, gli eventi e i progetti dei soci.</p>
+        <a href="https://www.instagram.com/symphony_factory_aps/" target="_blank" rel="noopener">Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+        <a href="https://www.facebook.com/SymphonyFactory" target="_blank" rel="noopener">Facebook<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+      </article>
+      <article class="contact-card reveal" style="--d:.18s">
+        <svg class="i" aria-hidden="true"><use href="#i-pin"/></svg>
+        <h3>Sede legale</h3>
+        <p>Via Paride Pasquali 9<br>40134 Bologna (BO)</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Paride+Pasquali+9+Bologna" target="_blank" rel="noopener">Apri nella mappa<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="form-title">
+  <div class="container split">
+    <div>
+      <span class="eyebrow reveal">Messaggio</span>
+      <h2 class="h2 reveal" id="form-title" style="margin:20px 0 26px">Scrivici <span class="serif">due righe</span></h2>
+      <p class="lead muted reveal">Compila i campi: si aprirà il tuo programma di posta con il messaggio già pronto, indirizzato alla persona giusta.</p>
+      <p class="form__note reveal">Nessun dato viene salvato o inviato dal sito.</p>
+    </div>
+    <div class="form-panel reveal" style="--d:.1s">
+      <form class="form" data-mail-form aria-labelledby="form-title" novalidate>
+        <div class="form__row">
+          <div class="field">
+            <label for="f-nome">Nome</label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Email <span class="muted">(facoltativa)</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-arg">Argomento</label>
+          <select id="f-arg" name="argomento" required>
+            <option>Informazioni sull'associazione</option>
+            <option>Tesseramento</option>
+            <option>Eventi e collaborazioni</option>
+            <option>Home studio</option>
+            <option>Donazioni</option>
+            <option>Altro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Messaggio</label>
+          <textarea id="f-msg" name="messaggio" required></textarea>
+        </div>
+        <button class="btn btn--ink" type="submit" style="justify-self:start"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Prepara l'email</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="section section--gold section--tight" aria-labelledby="cta-title">
+  <div class="container cta-band">
+    <h2 class="h2 reveal" id="cta-title">Vuoi far parte <span class="serif">della factory?</span></h2>
+    <div class="cta-band__actions reveal">
+      <a class="btn btn--ink" href="/diventa-socio/">Diventa socio <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>

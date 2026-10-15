@@ -1,0 +1,31 @@
+<section class="cookie" role="dialog" aria-modal="false" aria-labelledby="cookie-title" aria-describedby="cookie-text" data-cookie hidden>
+  <div class="cookie__main">
+    <h2 class="cookie__title" id="cookie-title">Cookie e privacy</h2>
+    <p class="cookie__text" id="cookie-text">Usiamo solo strumenti tecnici necessari al funzionamento del sito. Con il tuo consenso potremo usare anche statistiche anonime per migliorarlo. Puoi cambiare idea quando vuoi dal link "Preferenze cookie" in fondo alla pagina. <a href="/privacy/">Leggi l'informativa</a></p>
+
+    <div class="cookie__prefs" id="cookie-prefs" data-cookie-prefs hidden>
+      <div class="cookie__opt">
+        <div>
+          <p class="cookie__opt-title">Necessari</p>
+          <p class="cookie__opt-text">Servono a far funzionare il sito e a ricordare la tua scelta. Sempre attivi.</p>
+        </div>
+        <span class="switch is-locked" aria-hidden="true"><span></span></span>
+        <span class="sr-only">Sempre attivi</span>
+      </div>
+      <div class="cookie__opt">
+        <div>
+          <p class="cookie__opt-title" id="opt-stat">Statistiche</p>
+          <p class="cookie__opt-text">Dati anonimi e aggregati su come viene usato il sito.</p>
+        </div>
+        <button class="switch" type="button" role="switch" aria-checked="false" aria-labelledby="opt-stat" data-cookie-cat="statistiche"><span></span></button>
+      </div>
+    </div>
+
+    <div class="cookie__actions">
+      <button class="btn btn--ghost btn--sm" type="button" data-cookie-reject>Rifiuta</button>
+      <button class="btn btn--gold btn--sm" type="button" data-cookie-accept>Accetta tutti</button>
+      <button class="cookie__link" type="button" aria-expanded="false" aria-controls="cookie-prefs" data-cookie-custom>Personalizza</button>
+      <button class="btn btn--gold btn--sm" type="button" data-cookie-save hidden>Salva le scelte</button>
+    </div>
+  </div>
+</section>

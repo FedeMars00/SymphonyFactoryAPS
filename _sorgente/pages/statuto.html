@@ -1,0 +1,33 @@
+<section class="page-hero page-hero--short" aria-labelledby="page-title">
+  {{vinyl:vinyl--spin}}
+  <div class="container page-hero__content">
+    {{breadcrumb}}
+    <span class="eyebrow">Documenti</span>
+    <h1 id="page-title">Lo <span class="serif">statuto.</span></h1>
+    <p class="lead">Statuto di Symphony Factory, Associazione di Promozione Sociale costituita ai sensi del Codice Civile e del D.Lgs. 3 luglio 2017 n. 117 (Codice del Terzo Settore).</p>
+    <div class="cta-band__actions no-print">
+      <button class="btn btn--ghost" type="button" onclick="window.print()"><svg class="i" aria-hidden="true"><use href="#i-print"/></svg>Stampa o salva in PDF</button>
+    </div>
+  </div>
+</section>
+
+<section class="section section--light statuto" aria-label="Testo dello statuto">
+  <div class="container statuto__grid">
+    <aside class="toc no-print" aria-labelledby="toc-title">
+      <details class="toc__box" open>
+        <summary id="toc-title">Indice</summary>
+        <nav data-toc aria-labelledby="toc-title">
+{{statuto_toc}}
+        </nav>
+      </details>
+    </aside>
+    <article class="statuto__body">
+      <header class="statuto__head">
+        <p>Statuto</p>
+        <p>Associazione di Promozione Sociale</p>
+        <p class="statuto__name">“Symphony Factory”</p>
+      </header>
+{{statuto_body}}
+    </article>
+  </div>
+</section>

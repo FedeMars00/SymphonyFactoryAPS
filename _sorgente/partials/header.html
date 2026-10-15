@@ -1,0 +1,39 @@
+<header class="site-header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="/" aria-label="Symphony Factory APS, torna alla home">
+      <img src="/assets/img/logo-color-360.webp" width="360" height="193" alt="Symphony Factory" decoding="async" fetchpriority="high">
+    </a>
+    <nav class="nav" aria-label="Menu principale">
+      <ul class="nav__list">
+        <li><a href="/associazione/"{{cur:/associazione/}}>L'associazione</a></li>
+        <li><a href="/attivita/"{{cur:/attivita/}}>Attività</a></li>
+        <li><a href="/sostienici/"{{cur:/sostienici/}}>Sostienici</a></li>
+        <li><a href="/contatti/"{{cur:/contatti/}}>Contatti</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--gold btn--sm header__cta" href="/diventa-socio/"{{cur:/diventa-socio/}}>Diventa socio</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" data-menu-toggle>
+      <span class="sr-only" data-menu-label>Apri il menu</span>
+      <span class="burger__lines" aria-hidden="true"></span>
+    </button>
+  </div>
+</header>
+<div class="menu" id="menu-mobile" data-menu hidden>
+  <nav class="container menu__inner" aria-label="Menu mobile">
+    <ol class="menu__list">
+      <li><a href="/"><span class="menu__n">00</span>Home</a></li>
+      <li><a href="/associazione/"{{cur:/associazione/}}><span class="menu__n">01</span>L'associazione</a></li>
+      <li><a href="/attivita/"{{cur:/attivita/}}><span class="menu__n">02</span>Attività</a></li>
+      <li><a href="/diventa-socio/"{{cur:/diventa-socio/}}><span class="menu__n">03</span>Diventa socio</a></li>
+      <li><a href="/sostienici/"{{cur:/sostienici/}}><span class="menu__n">04</span>Sostienici</a></li>
+      <li><a href="/contatti/"{{cur:/contatti/}}><span class="menu__n">05</span>Contatti</a></li>
+    </ol>
+    <div class="menu__foot">
+      <a href="mailto:info@symphonyfactory.it">info@symphonyfactory.it</a>
+      <div class="menu__social">
+        <a href="https://www.instagram.com/symphony_factory_aps/" rel="noopener" target="_blank" aria-label="Instagram (si apre in una nuova scheda)"><svg class="i"><use href="#i-instagram"/></svg></a>
+        <a href="https://www.facebook.com/SymphonyFactory" rel="noopener" target="_blank" aria-label="Facebook (si apre in una nuova scheda)"><svg class="i"><use href="#i-facebook"/></svg></a>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,5 @@
+# Symphony Factory APS: https://www.symphonyfactory.it
+User-agent: *
+Allow: /
+
+Sitemap: https://www.symphonyfactory.it/sitemap.xml
