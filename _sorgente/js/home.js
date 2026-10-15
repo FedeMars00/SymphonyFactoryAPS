@@ -375,5 +375,17 @@
   }
   playBtn.addEventListener('click', () => toggle(!playing));
 
+  /* Su smartphone il pulsante esce dal disco (che resta libero per lo scratch)
+     e si sposta subito sotto la banda che scorre. */
+  const dock = document.querySelector('[data-play-dock]');
+  const mqDock = window.matchMedia('(max-width: 720px)');
+  const placePlay = () => {
+    if (!dock) return;
+    if (mqDock.matches) dock.appendChild(playBtn);
+    else hero.appendChild(playBtn);
+  };
+  mqDock.addEventListener('change', placePlay);
+  placePlay();
+
   run();
 })();

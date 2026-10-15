@@ -194,7 +194,16 @@
   .hero__hint-touch .i { width: 14px; height: 14px; color: var(--gold); stroke-width: 2; animation: sway 1.8s var(--ease) infinite; }
   .hero__hint-touch .hint-l { rotate: 180deg; animation-direction: reverse; }
 }
-@media (pointer: coarse) and (max-width: 720px) {
-  .hero__hint-touch { bottom: calc(var(--vs) * .1 + 38px); }
-}
 @keyframes sway { 0%, 100% { translate: 0 0; } 50% { translate: -4px 0; } }
+
+/* Pulsante del disco sotto la banda che scorre (solo smartphone) */
+.play-dock { display: none; }
+@media (max-width: 720px) {
+  .play-dock {
+    display: flex; justify-content: center; padding: 18px var(--gutter);
+    background: var(--ink); border-bottom: 1px solid var(--line-d);
+  }
+  .play-dock .play { position: static; translate: none; }
+  .play-dock .play:hover { transform: none; }
+  .hero__hint-touch { bottom: calc(var(--vs) * .2); }
+}
