@@ -53,7 +53,8 @@
   disc.addEventListener('pointerdown', (e) => {
     if (e.button > 0) return;
     if (e.pointerType !== 'touch') e.preventDefault();
-    touchGain = e.pointerType === 'touch' ? 1.6 : 1;
+    touchGain = e.pointerType === 'touch' ? 1.6 : 1.5;
+    hero.classList.add('is-scratching');
     dragging = true;
     try { disc.setPointerCapture(e.pointerId); } catch (_) { /* puntatore non catturabile */ }
     lastA = angleTo(e.clientX, e.clientY);
@@ -76,7 +77,7 @@
     lastA = a;
     lastT = now;
     if (engine && playing) engine.scratch(true, dragVel);
-    if (touchGain > 1 && canVibrate) {
+    if (e.pointerType === 'touch' && canVibrate) {
       travel += Math.abs(d);
       if (travel > 40) { travel = 0; try { navigator.vibrate(6); } catch (_) { /* non supportato */ } }
     }
@@ -84,6 +85,7 @@
   const endDrag = () => {
     if (!dragging) return;
     dragging = false;
+    hero.classList.remove('is-scratching');
     vel = Math.max(-1200, Math.min(1200, dragVel));
     if (engine) engine.scratch(false);
   };

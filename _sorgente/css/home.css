@@ -207,3 +207,14 @@
   .play-dock .play:hover { transform: none; }
   .hero__hint-touch { bottom: calc(var(--vs) * .2); }
 }
+
+/* Scratch da desktop: i testi del hero lasciano passare il mouse al disco,
+   restano cliccabili solo link e pulsanti. */
+.hero__content { pointer-events: none; }
+.hero__content a, .hero__content button { pointer-events: auto; }
+@media (pointer: fine) {
+  .hero__stage .vinyl__disc { transition: filter .3s; }
+  .hero__stage .vinyl__disc:hover { filter: brightness(1.18); }
+  .hero.is-scratching, .hero.is-scratching * { cursor: grabbing !important; user-select: none; -webkit-user-select: none; }
+}
+@media (pointer: fine) and (min-width: 900px) and (max-width: 1280px) { .hero__hint { display: block; } }
