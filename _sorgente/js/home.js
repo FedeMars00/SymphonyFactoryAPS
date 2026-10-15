@@ -9,7 +9,6 @@
   const g = canvas.getContext('2d');
   const playBtn = hero.querySelector('[data-play]');
   const playLabel = hero.querySelector('[data-play-label]');
-  const hint = hero.querySelector('[data-hint]');
 
   const IDLE = reduce ? 0 : 22;   // gradi al secondo, a riposo
   const PLAY = 200;               // 33⅓ giri al minuto
@@ -45,15 +44,23 @@
   hero.addEventListener('pointerleave', () => { px = -1; });
 
   /* ---------- Scratch con mouse o penna ---------- */
+  // Col dito: il disco lascia al browser lo scorrimento verticale (touch-action: pan-y)
+  // e intercetta i trascinamenti orizzontali, con sensibilità maggiore e una piccola vibrazione.
+  const hints = hero.querySelectorAll('[data-hint]');
+  const canVibrate = 'vibrate' in navigator;
+  let touchGain = 1;
+  let travel = 0;
   disc.addEventListener('pointerdown', (e) => {
-    if (e.pointerType === 'touch') return;
-    e.preventDefault();
+    if (e.button > 0) return;
+    if (e.pointerType !== 'touch') e.preventDefault();
+    touchGain = e.pointerType === 'touch' ? 1.6 : 1;
     dragging = true;
-    disc.setPointerCapture(e.pointerId);
+    try { disc.setPointerCapture(e.pointerId); } catch (_) { /* puntatore non catturabile */ }
     lastA = angleTo(e.clientX, e.clientY);
     lastT = performance.now();
     dragVel = 0;
-    if (hint) hint.hidden = true;
+    travel = 0;
+    hints.forEach((h) => { h.hidden = true; });
   });
   disc.addEventListener('pointermove', (e) => {
     if (!dragging) return;
@@ -61,6 +68,7 @@
     let d = a - lastA;
     if (d > 180) d -= 360;
     if (d < -180) d += 360;
+    d *= touchGain;
     const now = performance.now();
     const dt = Math.max(8, now - lastT) / 1000;
     angle += d;
@@ -68,6 +76,10 @@
     lastA = a;
     lastT = now;
     if (engine && playing) engine.scratch(true, dragVel);
+    if (touchGain > 1 && canVibrate) {
+      travel += Math.abs(d);
+      if (travel > 40) { travel = 0; try { navigator.vibrate(6); } catch (_) { /* non supportato */ } }
+    }
   });
   const endDrag = () => {
     if (!dragging) return;

@@ -178,3 +178,23 @@
 .dona__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: clamp(32px, 6vw, 100px); align-items: center; }
 @media (max-width: 900px) { .dona__grid { grid-template-columns: 1fr; } }
 .dona__grid .lead { color: var(--muted-l); }
+
+/* Suggerimento per lo scratch col dito (solo dispositivi touch) */
+.hero__hint-touch { display: none; }
+@media (pointer: coarse) {
+  .hero__stage .vinyl__disc { cursor: default; }
+  .hero__hint-touch {
+    display: flex; align-items: center; gap: 8px;
+    position: absolute; z-index: 4; left: var(--vx); bottom: calc(var(--ground) / 2 + 40px);
+    translate: -50% 0; margin: 0; pointer-events: none; white-space: nowrap;
+    font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--cream);
+    padding: 6px 12px; border-radius: 999px; background: rgba(15,14,13,.6);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  }
+  .hero__hint-touch .i { width: 14px; height: 14px; color: var(--gold); stroke-width: 2; animation: sway 1.8s var(--ease) infinite; }
+  .hero__hint-touch .hint-l { rotate: 180deg; animation-direction: reverse; }
+}
+@media (pointer: coarse) and (max-width: 720px) {
+  .hero__hint-touch { bottom: calc(var(--vs) * .1 + 38px); }
+}
+@keyframes sway { 0%, 100% { translate: 0 0; } 50% { translate: -4px 0; } }
