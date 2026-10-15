@@ -35,6 +35,17 @@ python3 _sorgente/build.py
 
 Se modifichi direttamente i file in `sito/`, la prossima build li sovrascrive.
 
+## Anteprima su GitHub Pages
+
+L'anteprima è su https://fedemars00.github.io/SymphonyFactoryAPS/ (non indicizzata da Google).
+Dopo ogni modifica, aggiornala con:
+
+```bash
+bash _sorgente/pubblica-anteprima.sh
+```
+
+Lo script genera `_anteprima/` (percorsi adattati alla sottocartella) e la carica sul branch `gh-pages`.
+
 ## Messa online
 
 - **Hosting Apache** (Aruba, SiteGround, ecc.): carica il contenuto di `sito/`. Il file `.htaccess` gestisce HTTPS, www, la pagina 404, la cache e i redirect dai vecchi indirizzi di Google Sites.

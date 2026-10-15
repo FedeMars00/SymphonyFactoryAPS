@@ -4,16 +4,39 @@ Build del sito Symphony Factory APS.
 
 Assembla le pagine in ../sito/ con CSS e JS inline (nessun file .css/.js esterno).
 Uso:  python3 _sorgente/build.py
+      python3 _sorgente/build.py --preview /NomeRepo   (anteprima per GitHub Pages in _anteprima/)
 Modifica i file in _sorgente/ (pagine, partials, css, js) e rilancia lo script:
 i file HTML in sito/ vengono rigenerati.
 """
 import html
 import json
 import re
+import shutil
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT.parent / "sito"
+# Anteprima (GitHub Pages): il sito vive in una sottocartella, es. /SymphonyFactoryAPS
+BASE = ""
+PREVIEW = False
+if "--preview" in sys.argv:
+    PREVIEW = True
+    i = sys.argv.index("--preview")
+    BASE = sys.argv[i + 1].rstrip("/") if len(sys.argv) > i + 1 else ""
+    OUT = ROOT.parent / "_anteprima"
+
+
+def rebase(text):
+    """Antepone BASE ai percorsi assoluti del sito (/assets/..., /contatti/...)."""
+    if not BASE:
+        return text
+    text = re.sub(r'((?:href|src|data-src)=")/(?!/)', rf"\1{BASE}/", text)
+    text = text.replace("url(/assets", f"url({BASE}/assets")
+    text = text.replace('"href_matches":"/*"', f'"href_matches":"{BASE}/*"')
+    text = text.replace('"href_matches":"/404.html"', f'"href_matches":"{BASE}/404.html"')
+    return text
+
 SITE = "https://www.symphonyfactory.it"
 LASTMOD = "2026-10-15"
 
@@ -407,6 +430,15 @@ def build_statuto():
 
 # ---------------------------------------------------------------- assemblaggio
 def build():
+    if PREVIEW:
+        # copia i file statici (font, immagini, icone) e li adatta alla sottocartella
+        if OUT.exists():
+            shutil.rmtree(OUT)
+        shutil.copytree(ROOT.parent / "sito", OUT, ignore=shutil.ignore_patterns("*.html", ".htaccess", "vercel.json"))
+        (OUT / "robots.txt").write_text("User-agent: *\nDisallow: /\n", encoding="utf-8")
+        (OUT / ".nojekyll").write_text("", encoding="utf-8")
+        mf = OUT / "site.webmanifest"
+        mf.write_text(mf.read_text(encoding="utf-8").replace('"/', f'"{BASE}/'), encoding="utf-8")
     base_css = read("css/base.css")
     base_js = read("js/base.js")
     assert "</script" not in base_js.lower(), "base.js non può contenere </script>"
@@ -442,6 +474,8 @@ def build():
         foot_html = re.sub(r"\{\{cur:([^}]+)\}\}", cur, footer)
 
         robots = "noindex, follow" if page.get("noindex") else "index, follow, max-image-preview:large, max-snippet:-1"
+        if PREVIEW:
+            robots = "noindex, nofollow"
         canonical = "" if page.get("noindex") else f'<link rel="canonical" href="{url}">\n'
         og_url = "" if page.get("noindex") else f'<meta property="og:url" content="{url}">\n'
         title = html.escape(page["title"])
@@ -501,6 +535,7 @@ def build():
 </body>
 </html>
 """
+        doc = rebase(doc)
         if path == "/":
             target = OUT / "index.html"
         elif path.endswith(".html"):
@@ -521,7 +556,7 @@ def build():
         + "\n</urlset>\n",
         encoding="utf-8",
     )
-    print("  ✓ sito/sitemap.xml")
+    print(f"  ✓ {OUT.name}/sitemap.xml")
 
 
 if __name__ == "__main__":
