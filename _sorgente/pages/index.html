@@ -1,235 +1,215 @@
 <section class="hero" aria-labelledby="hero-title" data-hero>
-  <div class="hero__stage">
-    <div class="hero__grain" aria-hidden="true"></div>
-    <div class="hero__staff" aria-hidden="true"></div>
-    {{vinyl}}
+  <div class="hero__board" data-board aria-hidden="true">
+    <figure class="ph hero__ph" data-drag style="--i:0"><img src="/assets/img/foto/festa-dall-alto.webp" width="736" height="981" alt="" decoding="async" fetchpriority="high"></figure>
+    <figure class="ph hero__ph ph--tape" data-drag style="--i:1"><img src="/assets/img/foto/muro-idee.webp" width="295" height="393" alt="" decoding="async"></figure>
+    <figure class="ph hero__ph" data-drag style="--i:2"><img src="/assets/img/foto/musicista-strada.webp" width="735" height="490" alt="" decoding="async"></figure>
+    <figure class="ph hero__ph ph--tape ph--tape-r" data-drag style="--i:3"><img src="/assets/img/foto/polaroid.webp" width="360" height="480" alt="" decoding="async"></figure>
+    <figure class="ph hero__ph" data-drag style="--i:4"><img src="/assets/img/foto/cena-condivisa.webp" width="648" height="810" alt="" decoding="async" fetchpriority="high"></figure>
+    <figure class="ph hero__ph ph--tape" data-drag style="--i:5"><img src="/assets/img/foto/laboratorio-cerchio.webp" width="516" height="687" alt="" decoding="async"></figure>
   </div>
-  <canvas class="hero__wave" aria-hidden="true" data-wave></canvas>
 
-  <div class="container hero__content">
-    <h1 class="hero__title" id="hero-title">
-      <span class="hero__kicker">Symphony Factory APS · Associazione musicale a Bologna</span>
-      <span class="hero__line"><span style="--i:0">Fabbrichiamo</span></span>
-      <span class="hero__line"><span style="--i:1">musica,</span></span>
-      <span class="hero__line hero__line--serif"><span style="--i:2">insieme.</span></span>
-    </h1>
-    <div class="hero__bottom hero__fade">
-      <p class="lead">Siamo un'associazione di promozione sociale che sostiene gli artisti del territorio: dall'idea al brano finito, dal brano al palco.</p>
-      <div class="hero__ctas">
-        <a class="btn btn--gold" href="/diventa-socio/">Diventa socio <small>10 €/anno</small></a>
-        <a class="btn btn--ghost" href="#attivita">Cosa facciamo <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+  <div class="container hero__center">
+    <div class="hero__title">
+      <h1 id="hero-title"><span class="sr-only">Symphony Factory APS: creatività, benessere, territorio a Bologna</span><svg class="logo hero__logo" viewBox="19 19 1101 405" aria-hidden="true"><use href="#logo"/></svg></h1>
+      <p class="hero__payoff hero__fade" aria-hidden="true">creatività, benessere, territorio</p>
+    </div>
+    <p class="hero__sub hero__fade">Realtà culturale e sociale a Bologna. Creiamo spazi in cui le persone possono esprimersi e le idee diventano progetti.</p>
+    <div class="btn-row hero__ctas hero__fade">
+      <a class="btn" href="/diventa-socio/">Partecipa <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn--ghost" href="/collabora/">Sei un ente? Collabora</a>
+    </div>
+  </div>
+  <p class="hero__hint" aria-hidden="true">Sposta le foto, la tavola è tua</p>
+</section>
+
+<section class="section s-paper" id="chi-siamo" aria-labelledby="intro-title">
+  <div class="container intro__grid">
+    <div class="intro__text">
+      <h2 class="label reveal" id="intro-title">Chi siamo</h2>
+      <p class="big-text" data-fill>Symphony Factory è una realtà culturale e sociale che mette in relazione <strong>creatività, benessere e territorio.</strong></p>
+      <p class="muted reveal">La musica resta una parte fondamentale della nostra identità, dentro una visione più ampia: linguaggi artistici diversi, occasioni di incontro e partecipazione, collaborazioni con altre realtà. Vogliamo ridare vita a spazi urbani che hanno bisogno di una nuova anima.</p>
+      <p class="reveal"><a class="link-arrow" href="/associazione/">Scopri chi siamo <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+    </div>
+    <div class="duo" aria-hidden="true">
+      <figure class="ph tilt-r reveal"><img src="/assets/img/foto/teatro-prove.webp" width="900" height="1200" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="ph tilt-l ph--tape reveal" style="--d:.1s"><img src="/assets/img/foto/prove-band.webp" width="560" height="385" alt="" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-label="Ieri e oggi">
+  <div class="container">
+    <article class="era">
+      <div class="era__photos" aria-hidden="true">
+        <figure class="ph tilt-l reveal"><img src="/assets/img/foto/symphony-park-2024.webp" width="576" height="574" alt="" loading="lazy" decoding="async"><figcaption>Symphony Park, 2024</figcaption></figure>
+        <figure class="ph tilt-r2 ph--tape reveal" style="--d:.1s"><img src="/assets/img/foto/live-chitarrista.webp" width="867" height="626" alt="" loading="lazy" decoding="async"></figure>
       </div>
-    </div>
-  </div>
+      <div class="era__text">
+        <span class="label reveal">Da dove arriviamo</span>
+        <h2 class="reveal">Symphony Factory <em>ieri</em></h2>
+        <p class="era__sub reveal">Un'APS nata con un forte legame con la musica.</p>
+        <p class="reveal">Il primo obiettivo è sempre stato <strong>sostenere gli artisti emergenti e accompagnare le idee creative nel loro percorso di sviluppo</strong>. Con il supporto agli artisti, la direzione artistica, le collaborazioni e gli eventi abbiamo costruito un'identità legata alla cultura musicale e alla possibilità di trasformare intuizioni e talenti in progetti concreti, portandoli in spazi veri.</p>
+        <p class="muted reveal">Questa esperienza è il nostro punto di partenza e un patrimonio di competenze da cui continuare a crescere.</p>
+      </div>
+    </article>
 
-  <p class="hero__hint" data-hint aria-hidden="true">Trascina il disco, oppure</p>
-  <p class="hero__hint-touch" data-hint aria-hidden="true"><svg class="i hint-l"><use href="#i-arrow"/></svg>Fai scratch col dito<svg class="i hint-r"><use href="#i-arrow"/></svg></p>
-  <button class="play" type="button" aria-pressed="false" data-play>
-    <span class="play__icon" aria-hidden="true">
-      <svg class="i i-play"><use href="#i-play"/></svg>
-      <svg class="i i-pause"><use href="#i-pause"/></svg>
-    </span>
-    <span data-play-label>Ascolta il disco</span>
-  </button>
-
-  <div class="hero__ground">
-    <div class="container hero__ground-inner">
-      <p>Associazione di Promozione Sociale</p>
-    </div>
+    <article class="era era--rev">
+      <div class="era__photos" aria-hidden="true">
+        <figure class="ph tilt-r ph--tape-r ph--tape reveal"><img src="/assets/img/foto/cortile.webp" width="364" height="477" alt="" loading="lazy" decoding="async"></figure>
+        <figure class="ph tilt-l reveal" style="--d:.1s"><img src="/assets/img/foto/incontro-pubblico.webp" width="515" height="343" alt="" loading="lazy" decoding="async"></figure>
+      </div>
+      <div class="era__text">
+        <span class="label reveal">Dove stiamo andando</span>
+        <h2 class="reveal">Symphony Factory <em>da oggi</em></h2>
+        <p class="era__sub reveal">Creatività, benessere e territorio, insieme.</p>
+        <p class="reveal">Vogliamo creare le condizioni perché <strong>le persone possano esprimersi, le idee possano diventare progetti e i luoghi possano ritrovare una funzione culturale e sociale</strong>. Grazie a linguaggi artistici diversi da esplorare, vogliamo ridare vita a spazi urbani che hanno bisogno di una nuova anima.</p>
+        <p class="reveal"><a class="link-arrow" href="/attivita/">Cosa facciamo <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </article>
   </div>
 </section>
 
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
     <ul class="marquee__group">
-      <li>Contaminazione</li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li><span class="serif">home studio</span></li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li>Artisti emergenti</li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li><span class="serif">dal vivo</span></li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li>Partecipazione</li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li><span class="serif">Bologna</span></li><li><svg class="i"><use href="#i-star"/></svg></li>
+      <li>Creatività</li><li class="dot"></li><li class="alt">Benessere</li><li class="dot"></li><li>Partecipazione</li><li class="dot"></li><li class="alt">Collaborazione</li><li class="dot"></li><li>Territorio</li><li class="dot"></li>
     </ul>
     <ul class="marquee__group">
-      <li>Contaminazione</li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li><span class="serif">home studio</span></li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li>Artisti emergenti</li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li><span class="serif">dal vivo</span></li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li>Partecipazione</li><li><svg class="i"><use href="#i-star"/></svg></li>
-      <li><span class="serif">Bologna</span></li><li><svg class="i"><use href="#i-star"/></svg></li>
+      <li>Creatività</li><li class="dot"></li><li class="alt">Benessere</li><li class="dot"></li><li>Partecipazione</li><li class="dot"></li><li class="alt">Collaborazione</li><li class="dot"></li><li>Territorio</li><li class="dot"></li>
     </ul>
   </div>
 </div>
 
-<div class="play-dock" data-play-dock></div>
-
-<section class="section section--light" id="manifesto" aria-labelledby="manifesto-title">
+<section class="section s-wine manifesto" aria-labelledby="manifesto-title">
   <div class="container">
-    <h2 class="eyebrow reveal" id="manifesto-title">Chi siamo</h2>
-    <p class="manifesto__text" data-fill style="margin-top:28px">
-      Promuoviamo la cultura musicale e artistica attraverso la <span class="serif">contaminazione.</span>
-      Accogliamo gli artisti del territorio e trasformiamo le loro idee in progetti veri, da condividere con tutta la <span class="serif">comunità.</span>
-    </p>
-    <div class="manifesto__foot">
-      <p class="reveal">Symphony Factory nasce dalla passione comune per la musica e l'arte, compagne di vita di tutti i fondatori. La partecipazione collettiva è il fulcro di ogni attività: insieme costruiamo una sinfonia culturale di impatto sociale.</p>
-      <div class="reveal" style="--d:.1s"><a class="link-arrow" href="/associazione/">Scopri l'associazione <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></div>
+    <span class="label manifesto__label reveal">Manifesto</span>
+    <div class="manifesto__stage">
+      <figure class="ph tilt-l2 reveal" aria-hidden="true"><img src="/assets/img/foto/muro-idee.webp" width="295" height="393" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="ph tilt-r2 reveal" style="--d:.1s" aria-hidden="true"><img src="/assets/img/foto/polaroid.webp" width="360" height="480" alt="" loading="lazy" decoding="async"></figure>
+      <figure class="ph tilt-r reveal" style="--d:.2s" aria-hidden="true"><img src="/assets/img/foto/cena-condivisa.webp" width="648" height="810" alt="" loading="lazy" decoding="async"></figure>
+      <h2 class="manifesto__title reveal" id="manifesto-title">L'<span class="hl-sky">arte</span> non è soltanto ciò che si produce. È ciò che ci permette di <span class="hl-sky">diventare.</span></h2>
     </div>
-    <ul class="facts">
-      <li class="reveal"><strong>APS</strong><span>Associazione di Promozione Sociale, senza scopo di lucro</span></li>
-      <li class="reveal" style="--d:.08s"><strong>Bologna</strong><span>Un hub artistico aperto agli artisti del territorio</span></li>
-      <li class="reveal" style="--d:.16s"><strong>10 €</strong><span>La quota associativa annuale per entrare nella factory</span></li>
-    </ul>
+    <div class="manifesto__text reveal">
+      <p>Crediamo nell'artista prima che nel prodotto, nella ricerca prima del risultato, nell'espressione prima della sua valorizzazione commerciale.</p>
+      <p>Crediamo nella possibilità di scoprire voci nuove, coltivare identità, sperimentare linguaggi e riconoscere il ruolo che ogni persona può avere nella vita culturale e sociale.</p>
+      <p><strong>Symphony Factory crea spazio per tutto questo.</strong></p>
+    </div>
   </div>
 </section>
 
-<section class="section" id="attivita" aria-labelledby="attivita-title">
+<section class="section" aria-labelledby="pratica-title">
+  <div class="container">
+    <div class="section-head">
+      <span class="label reveal">In pratica</span>
+      <h2 class="h2 reveal" id="pratica-title">Quindi, nel pratico, che si fa?</h2>
+    </div>
+    <div class="doing">
+      <article class="doing__item reveal">
+        <span class="doing__n" aria-hidden="true">1.</span>
+        <h3>Più occasioni di partecipazione</h3>
+        <p>Accanto ai progetti musicali e artistici, <strong>laboratori, workshop, corsi ed esperienze creative</strong> legate a linguaggi artistici differenti.</p>
+      </article>
+      <article class="doing__item reveal" style="--d:.1s">
+        <span class="doing__n" aria-hidden="true">2.</span>
+        <h3>Spazi che tornano a vivere</h3>
+        <p><strong>Collaborazioni con enti e comunità locali</strong> per attivare spazi sottoutilizzati e restituire loro una funzione culturale e sociale.</p>
+      </article>
+    </div>
+    <div class="doing__note reveal">
+      <p class="muted">Questi scenari prendono forma insieme alle collaborazioni che costruiamo, alle risorse disponibili e agli spazi: uno spazio nostro o luoghi messi a disposizione da partner.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section s-paper" aria-labelledby="pubblici-title">
   <div class="container">
     <div class="section-head section-head--split">
       <div>
-        <span class="eyebrow reveal">Le nostre attività</span>
-        <h2 class="h2 reveal" id="attivita-title">Cosa <span class="serif gold">facciamo</span></h2>
+        <span class="label reveal">A chi ci rivolgiamo</span>
+        <h2 class="h2 reveal" id="pubblici-title">Due modi di entrare nella factory</h2>
       </div>
-      <p class="lead muted reveal">Sosteniamo chi fa musica in ogni fase: dallo studio al palco, dalla formazione alla comunità.</p>
+      <p class="lead muted reveal">La stessa visione, due strade diverse: chi vuole esprimersi e crescere con noi, e chi vuole costruire progetti sul territorio.</p>
     </div>
-
-    <div class="cards">
-      <article class="card reveal">
-        <div class="card__top"><span class="card__num">01</span><span class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-headphones"/></svg></span></div>
-        <h3><a class="card__link" href="/attivita/#home-studio">Home Studio</a></h3>
-        <p>Un hub artistico riservato ai soci: supporto tecnico per trasformare le idee creative in progetti musicali finiti, pronti per essere diffusi e valorizzati.</p>
-        <ul class="tags"><li>Solo soci</li><li>Supporto tecnico</li><li>Rifinitura dei progetti</li></ul>
-        <span class="card__more" aria-hidden="true">Scopri di più <svg class="i"><use href="#i-arrow"/></svg></span>
+    <div class="audience">
+      <article class="aud aud--sky reveal">
+        <span class="label aud__label">Persone, artisti e potenziali associati</span>
+        <h3 class="wf">Non destinatari, ma protagonisti.</h3>
+        <dl>
+          <div><dt>Chi sei</dt><dd>Artisti, creativi, persone con cui costruire percorsi di ricerca, confronto e crescita.</dd></div>
+          <div><dt>Cosa cerchiamo</dt><dd>Partecipazione, nuove competenze, idee, collaborazioni e persone che condividano i nostri valori.</dd></div>
+        </dl>
+        <a class="btn" href="/diventa-socio/">Partecipa <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
-      <article class="card reveal" style="--d:.08s">
-        <div class="card__top"><span class="card__num">02</span><span class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-burst"/></svg></span></div>
-        <h3><a class="card__link" href="/attivita/#direzione-artistica">Direzione artistica</a></h3>
-        <p>Creiamo eventi e format, anche con altre associazioni e realtà private, per dare ai giovani artisti emergenti palchi capaci di valorizzare il loro percorso.</p>
-        <ul class="tags"><li>Eventi</li><li>Format</li><li>Collaborazioni</li></ul>
-        <span class="card__more" aria-hidden="true">Scopri di più <svg class="i"><use href="#i-arrow"/></svg></span>
-      </article>
-      <article class="card reveal">
-        <div class="card__top"><span class="card__num">03</span><span class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-notes"/></svg></span></div>
-        <h3><a class="card__link" href="/attivita/#formazione">Formazione</a></h3>
-        <p>Workshop, seminari e masterclass per diffondere la cultura musicale e far crescere le competenze di chi suona, scrive e produce.</p>
-        <ul class="tags"><li>Workshop</li><li>Seminari</li><li>Masterclass</li></ul>
-        <span class="card__more" aria-hidden="true">Scopri di più <svg class="i"><use href="#i-arrow"/></svg></span>
-      </article>
-      <article class="card reveal" style="--d:.08s">
-        <div class="card__top"><span class="card__num">04</span><span class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-people"/></svg></span></div>
-        <h3><a class="card__link" href="/attivita/#comunita">Musica e comunità</a></h3>
-        <p>Crediamo nella musica come strumento di inclusione: progetti educativi e iniziative che avvicinano giovani e persone di ogni età alla vita musicale.</p>
-        <ul class="tags"><li>Scuole</li><li>Inclusione</li><li>Territorio</li></ul>
-        <span class="card__more" aria-hidden="true">Scopri di più <svg class="i"><use href="#i-arrow"/></svg></span>
+      <article class="aud aud--wine reveal" style="--d:.1s">
+        <span class="label aud__label">Enti, Comuni e partner territoriali</span>
+        <h3 class="wf">Progetti da costruire insieme.</h3>
+        <dl>
+          <div><dt>Chi sei</dt><dd>Amministrazioni pubbliche, enti, fondazioni e realtà interessate a collaborare su progetti culturali e sociali.</dd></div>
+          <div><dt>Cosa cerchiamo</dt><dd>Occasioni di collaborazione, spazi da valorizzare e progetti da costruire insieme.</dd></div>
+        </dl>
+        <a class="btn btn--cream" href="/collabora/">Collabora con noi <svg class="i arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section section--paper" aria-labelledby="percorso-title">
+<section class="section" aria-labelledby="esperienze-title">
   <div class="container">
-    <div class="section-head">
-      <span class="eyebrow reveal">Il percorso</span>
-      <h2 class="h2 reveal" id="percorso-title">Dall'idea <span class="serif">al palco</span></h2>
-    </div>
-    <ol class="steps">
-      <li class="step reveal">
-        <div class="step__disc" aria-hidden="true"><span>1</span></div>
-        <h3>Ti associ</h3>
-        <p>Compili il modulo e versi la quota annuale di 10 €. Da quel momento fai parte della factory.</p>
-      </li>
-      <li class="step reveal" style="--d:.08s">
-        <div class="step__disc" aria-hidden="true"><span>2</span></div>
-        <h3>Sviluppi</h3>
-        <p>Lavori al tuo progetto nell'home studio, con il supporto tecnico dell'associazione.</p>
-      </li>
-      <li class="step reveal" style="--d:.16s">
-        <div class="step__disc" aria-hidden="true"><span>3</span></div>
-        <h3>Lo porti dal vivo</h3>
-        <p>Eventi e format pensati per dare visibilità agli artisti emergenti su palchi che valorizzano il loro percorso.</p>
-      </li>
-      <li class="step reveal" style="--d:.24s">
-        <div class="step__disc" aria-hidden="true"><span>4</span></div>
-        <h3>Cresci</h3>
-        <p>Entri in una rete di artisti, associazioni e realtà del territorio che fanno musica insieme.</p>
-      </li>
-    </ol>
-  </div>
-</section>
-
-<section class="section section--gold socio" aria-labelledby="socio-title">
-  <div class="socio__ring" aria-hidden="true"></div>
-  <div class="container socio__grid">
-    <div class="reveal">
-      <p class="price" aria-label="10 euro all'anno"><span class="price__n">10</span><span class="price__c">€</span></p>
-      <span class="price__per">all'anno, per entrare in una factory intera.</span>
-    </div>
-    <div>
-      <span class="eyebrow reveal">Tesseramento</span>
-      <h2 class="h2 reveal" id="socio-title" style="margin:20px 0 30px">Diventa socio</h2>
-      <ul class="checks reveal">
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Accesso all'home studio riservato ai soci</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Partecipazione a eventi, workshop e iniziative</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Voce nelle scelte dell'associazione, in assemblea</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Una rete di artisti e appassionati con cui crescere</li>
-      </ul>
-      <div class="socio__actions reveal">
-        <a class="btn btn--ink" href="https://forms.gle/ccYdZisfdqNxyKqe8" target="_blank" rel="noopener">Compila il modulo <svg class="i arrow" aria-hidden="true"><use href="#i-out"/></svg><span class="sr-only"> (si apre in una nuova scheda)</span></a>
-        <a class="btn btn--outline-ink" href="/diventa-socio/">Come funziona</a>
+    <div class="section-head section-head--split">
+      <div>
+        <span class="label reveal">Esperienze</span>
+        <h2 class="h2 reveal" id="esperienze-title">Cose che abbiamo già fatto succedere</h2>
       </div>
-      <p class="socio__note reveal">Aperto ad artisti e a chi vuole sostenere il progetto, dai 14 anni in su.</p>
+      <p class="lead muted reveal">Eventi, contest e spazi creativi: il patrimonio da cui ripartiamo.</p>
     </div>
-  </div>
-</section>
-
-<section class="section section--light" aria-labelledby="dona-title">
-  <div class="container dona__grid">
-    <div>
-      <span class="eyebrow reveal">Sostienici</span>
-      <h2 class="h2 reveal" id="dona-title" style="margin:20px 0 26px">Ogni donazione diventa <span class="serif">musica</span></h2>
-      <p class="lead reveal">Le donazioni finanziano nuovi progetti e l'acquisto dei materiali da usare nell'home studio. Chiunque può contribuire.</p>
-      <p class="reveal" style="margin-top:28px"><a class="link-arrow" href="/sostienici/">Tutti i modi per sostenerci <svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-    </div>
-    <div class="copylist reveal" style="--d:.1s">
-      <div class="copybox">
-        <div><span class="copybox__label">Intestatario</span><span class="copybox__value">Associazione Symphony Factory APS</span></div>
-      </div>
-      <div class="copybox">
-        <div><span class="copybox__label">IBAN</span><span class="copybox__value">IT37 C084 7236 7600 0000 0121 991</span></div>
-        <button class="copy-btn" type="button" data-copy="IT37C0847236760000000121991"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>Copia<span class="sr-only"> l'IBAN</span></button>
-      </div>
-      <div class="copybox">
-        <div><span class="copybox__label">Causale</span><span class="copybox__value">Donazione liberale</span></div>
-        <button class="copy-btn" type="button" data-copy="Donazione liberale"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg>Copia<span class="sr-only"> la causale</span></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section eventi" aria-labelledby="eventi-title">
-  <div class="burst" aria-hidden="true"></div>
-  <div class="container">
-    <span class="eyebrow reveal">Eventi e collaborazioni</span>
-    <h2 class="eventi__title reveal" id="eventi-title" style="margin-top:24px">Hai un locale, un festival, <span class="serif">un'idea?</span></h2>
-    <div class="eventi__grid">
-      <p class="lead reveal">Costruiamo eventi e serate musicali insieme ad associazioni, locali e realtà private. Raccontaci il tuo progetto: troveremo gli artisti e il format giusti.</p>
-      <div class="person reveal" style="--d:.1s">
-        <div class="person__head">
-          <span class="person__avatar" aria-hidden="true">M</span>
-          <div><p class="person__name" style="margin:0">Maurizia</p><p class="person__role" style="margin:0">Eventi e serate musicali</p></div>
+    <div class="cards cards--3">
+      <article class="card card--photo reveal">
+        <div class="card__img"><img src="/assets/img/foto/symphony-park-2024.webp" width="576" height="574" alt="Locandina di Symphony Park, 9 novembre 2024" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <span class="label">Evento · 9 novembre 2024</span>
+          <h3>Symphony Park</h3>
+          <p class="muted">Musica dal vivo dalle 16 alle 22.30, per una giornata insieme.</p>
         </div>
-        <div class="person__actions">
-          <a class="btn btn--gold" href="tel:+393661824404"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>366 182 4404</a>
-          <a class="btn btn--ghost" href="mailto:maurizia@symphonyfactory.it"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>maurizia@symphonyfactory.it</a>
+      </article>
+      <article class="card card--photo reveal" style="--d:.08s">
+        <div class="card__img"><img src="/assets/img/foto/contest-musicare-2024.webp" width="430" height="432" alt="Grafica dei primi step di selezione del Contest Musicare 2024" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <span class="label">Contest · 2024</span>
+          <h3>Contest Musicare</h3>
+          <p class="muted">Un contest a più fasi di selezione dedicato ad artisti emergenti.</p>
         </div>
+      </article>
+      <article class="card card--photo reveal" style="--d:.16s">
+        <div class="card__img"><img src="/assets/img/foto/basso.webp" width="431" height="429" alt="Primo piano di un basso elettrico" loading="lazy" decoding="async"></div>
+        <div class="card__body">
+          <span class="label">Per i soci</span>
+          <h3><a class="card__link" href="/attivita/#home-studio">Home Studio</a></h3>
+          <p class="muted">Un hub dove le idee diventano progetti musicali finiti.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section s-sky" aria-labelledby="idea-title">
+  <div class="container idea">
+    <h2 class="idea__title reveal" id="idea-title">Hai un'idea. Facciamola suonare.</h2>
+    <div class="idea__aside reveal" style="--d:.1s">
+      <p class="label">Letteralmente.</p>
+      <p>Symphony Factory è un luogo per artisti emergenti, idee da sviluppare e persone con cui farlo. Seguici per open call, eventi e nuovi progetti.</p>
+      <div class="btn-row">
+        <a class="btn" href="https://www.instagram.com/symphony_factory_aps/" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg>Instagram<span class="sr-only"> (si apre in una nuova scheda)</span></a>
+        <a class="btn btn--ghost" href="/contatti/">Scrivici</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section section--light" aria-labelledby="faq-title">
+<section class="section" aria-labelledby="faq-title">
   <div class="container split">
     <div class="sticky">
-      <span class="eyebrow reveal">FAQ</span>
-      <h2 class="h2 reveal" id="faq-title" style="margin:20px 0 24px">Domande <span class="serif">frequenti</span></h2>
+      <span class="label reveal">FAQ</span>
+      <h2 class="h2 reveal" id="faq-title" style="margin:16px 0 22px">Domande frequenti</h2>
       <p class="muted reveal">Non trovi la risposta? Scrivici a <a href="mailto:info@symphonyfactory.it">info@symphonyfactory.it</a>.</p>
     </div>
     <div class="faq reveal">

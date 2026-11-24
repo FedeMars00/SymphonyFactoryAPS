@@ -1,26 +1,32 @@
 <section class="page-hero" aria-labelledby="page-title">
-  {{vinyl:vinyl--spin}}
-  <div class="container page-hero__content">
-    {{breadcrumb}}
-    <span class="eyebrow">Sostienici</span>
-    <h1 id="page-title">Ogni donazione diventa <span class="serif">musica.</span></h1>
-    <p class="lead">Chiunque può sostenere Symphony Factory: le donazioni finanziano nuovi progetti e l'acquisto dei materiali da usare nell'home studio.</p>
-    <div class="cta-band__actions">
-      <a class="btn btn--gold" href="#dona"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Fai una donazione</a>
-      <a class="btn btn--ghost" href="/diventa-socio/">Oppure diventa socio</a>
+  <div class="container page-hero__grid">
+    <div class="page-hero__text">
+      {{breadcrumb}}
+      <span class="label">Sostienici</span>
+      <h1 id="page-title">Ogni contributo diventa spazio per qualcuno.</h1>
+      <p class="lead">Chiunque può sostenere Symphony Factory. Le donazioni finanziano nuovi progetti e i materiali che mettiamo a disposizione di artisti e partecipanti.</p>
+      <div class="btn-row">
+        <a class="btn" href="#dona"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Fai una donazione</a>
+        <a class="btn btn--ghost" href="/diventa-socio/">Oppure partecipa</a>
+      </div>
+    </div>
+    <div class="page-hero__photos" aria-hidden="true">
+      <figure class="ph tilt-r reveal"><img src="/assets/img/foto/teatro-prove.webp" width="900" height="1200" alt="" decoding="async" fetchpriority="high"></figure>
+      <figure class="ph tilt-l ph--tape reveal" style="--d:.1s"><img src="/assets/img/foto/muro-idee.webp" width="295" height="393" alt="" decoding="async"></figure>
+      <figure class="ph tilt-r2 reveal" style="--d:.2s"><img src="/assets/img/foto/musicista-strada.webp" width="735" height="490" alt="" decoding="async"></figure>
     </div>
   </div>
 </section>
 
-<section class="section section--light" id="dona" aria-labelledby="dona-title">
+<section class="section s-paper" id="dona" aria-labelledby="dona-title">
   <div class="container split">
     <div>
-      <span class="eyebrow reveal">Donazione con bonifico</span>
-      <h2 class="h2 reveal" id="dona-title" style="margin:20px 0 26px">Dona in <span class="serif">un minuto</span></h2>
+      <span class="label reveal">Donazione con bonifico</span>
+      <h2 class="h2 reveal" id="dona-title" style="margin:16px 0 24px">Dona in un minuto.</h2>
       <p class="lead reveal">Fai un bonifico all'associazione con i dati qui accanto. Puoi copiarli con un tocco e incollarli nella tua app bancaria.</p>
       <ul class="uses reveal">
-        <li><strong>Nuovi progetti</strong><span>Eventi, format e iniziative per gli artisti emergenti del territorio.</span></li>
-        <li><strong>Home studio</strong><span>Materiali e strumentazione da mettere a disposizione dei soci.</span></li>
+        <li><strong>Nuovi progetti</strong><span>Laboratori, eventi e iniziative per artisti e persone del territorio.</span></li>
+        <li><strong>Materiali</strong><span>Strumentazione e materiali per l'Home Studio e le attività creative.</span></li>
       </ul>
     </div>
     <div class="copylist reveal" style="--d:.1s">
@@ -45,39 +51,39 @@
   <div class="container">
     <div class="section-head section-head--split">
       <div>
-        <span class="eyebrow reveal">Altri modi</span>
-        <h2 class="h2 reveal" id="modi-title">Puoi aiutarci <span class="serif gold">anche così</span></h2>
+        <span class="label reveal">Altri modi</span>
+        <h2 class="h2 reveal" id="modi-title">Puoi aiutarci anche così</h2>
       </div>
-      <p class="lead muted reveal">Non serve per forza una donazione: tempo, idee e collaborazioni valgono quanto un bonifico.</p>
+      <p class="lead muted reveal">Tempo, idee e collaborazioni valgono quanto un bonifico.</p>
     </div>
     <div class="cards cards--3">
       <article class="card reveal">
-        <div class="card__top"><span class="card__num">01</span><span class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-people"/></svg></span></div>
-        <h3><a class="card__link" href="/diventa-socio/">Diventa socio</a></h3>
+        <span class="card__num" aria-hidden="true">01</span>
+        <h3><a class="card__link" href="/diventa-socio/">Partecipa</a></h3>
         <p>Con 10 € all'anno entri nell'associazione, partecipi alle sue scelte e sostieni concretamente le sue attività.</p>
         <span class="card__more" aria-hidden="true">Iscriviti <svg class="i"><use href="#i-arrow"/></svg></span>
       </article>
       <article class="card reveal" style="--d:.06s">
-        <div class="card__top"><span class="card__num">02</span><span class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-hand"/></svg></span></div>
+        <span class="card__num" aria-hidden="true">02</span>
         <h3><a class="card__link" href="mailto:info@symphonyfactory.it?subject=Voglio%20dare%20una%20mano">Dai una mano</a></h3>
         <p>Le nostre attività vivono grazie al volontariato dei soci. Metti a disposizione tempo e competenze.</p>
         <span class="card__more" aria-hidden="true">Scrivici <svg class="i"><use href="#i-arrow"/></svg></span>
       </article>
       <article class="card reveal" style="--d:.12s">
-        <div class="card__top"><span class="card__num">03</span><span class="card__icon" aria-hidden="true"><svg class="i"><use href="#i-building"/></svg></span></div>
-        <h3><a class="card__link" href="/contatti/">Collabora con noi</a></h3>
-        <p>Sei un'associazione, un locale o un'azienda? Costruiamo insieme eventi e progetti per la musica emergente.</p>
-        <span class="card__more" aria-hidden="true">Contattaci <svg class="i"><use href="#i-arrow"/></svg></span>
+        <span class="card__num" aria-hidden="true">03</span>
+        <h3><a class="card__link" href="/collabora/">Collabora</a></h3>
+        <p>Sei un ente, un Comune o un'azienda? Costruiamo insieme progetti culturali e sociali sul territorio.</p>
+        <span class="card__more" aria-hidden="true">Scopri come <svg class="i"><use href="#i-arrow"/></svg></span>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section section--gold section--tight" aria-labelledby="cta-title">
+<section class="section s-sky section--tight" aria-labelledby="cta-title">
   <div class="container cta-band">
-    <h2 class="h2 reveal" id="cta-title">Grazie, <span class="serif">davvero.</span></h2>
-    <div class="cta-band__actions reveal">
-      <a class="btn btn--ink" href="https://www.instagram.com/symphony_factory_aps/" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg>Segui i progetti che sostieni<span class="sr-only"> su Instagram (si apre in una nuova scheda)</span></a>
+    <h2 class="h2 reveal" id="cta-title" style="color:var(--orange)">Grazie, davvero.</h2>
+    <div class="btn-row reveal">
+      <a class="btn" href="https://www.instagram.com/symphony_factory_aps/" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg>Segui i progetti che sostieni<span class="sr-only"> su Instagram (si apre in una nuova scheda)</span></a>
     </div>
   </div>
 </section>

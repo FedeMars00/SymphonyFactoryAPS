@@ -38,12 +38,12 @@ def rebase(text):
     return text
 
 SITE = "https://www.symphonyfactory.it"
-LASTMOD = "2026-10-15"
+LASTMOD = "2026-11-24"
 
 ORG_DESC = (
-    "Symphony Factory APS è un'associazione di promozione sociale di Bologna che promuove "
-    "la cultura musicale e artistica attraverso la contaminazione e sostiene lo sviluppo "
-    "dei progetti degli artisti associati."
+    "Symphony Factory APS è un'associazione di promozione sociale di Bologna: una realtà culturale "
+    "e sociale che mette in relazione creatività, benessere e territorio, con laboratori, "
+    "progetti artistici, musica, eventi e collaborazioni per attivare spazi della città."
 )
 
 # ---------------------------------------------------------------- pagine
@@ -52,8 +52,8 @@ PAGES = [
     {
         "path": "/",
         "file": "index.html",
-        "title": "Symphony Factory APS | Associazione musicale a Bologna",
-        "description": "Associazione di promozione sociale a Bologna: home studio per i soci, eventi e direzione artistica per artisti emergenti. Diventa socio con 10 € l'anno.",
+        "title": "Symphony Factory APS | Creatività, benessere e territorio",
+        "description": "Realtà culturale e sociale di Bologna: laboratori, musica, eventi e collaborazioni con enti per dare nuova vita agli spazi della città. Partecipa anche tu.",
         "css": ["home.css"],
         "js": ["home.js"],
         "type": "WebPage",
@@ -62,27 +62,35 @@ PAGES = [
     {
         "path": "/associazione/",
         "file": "associazione.html",
-        "crumb": "L'associazione",
-        "title": "L'associazione | Symphony Factory APS Bologna",
-        "description": "Chi siamo: un'associazione di promozione sociale nata a Bologna dalla passione per la musica e l'arte. Missione, valori, statuto e come partecipare.",
+        "crumb": "Chi siamo",
+        "title": "Chi siamo: mission, vision e manifesto | Symphony Factory",
+        "description": "Symphony Factory APS, Bologna: da dove arriviamo, dove stiamo andando, mission, vision, valori e manifesto di una realtà culturale e sociale.",
         "type": "AboutPage",
     },
     {
         "path": "/attivita/",
         "file": "attivita.html",
-        "crumb": "Attività",
-        "title": "Home studio, eventi e formazione | Symphony Factory",
-        "description": "Home studio per i soci, direzione artistica di eventi e format, workshop e progetti educativi: le attività di Symphony Factory APS a Bologna.",
+        "crumb": "Cosa facciamo",
+        "title": "Cosa facciamo: laboratori, musica e spazi | Symphony Factory",
+        "description": "Laboratori, workshop e corsi, Home Studio e artisti emergenti, eventi e spazi urbani da riattivare: le attività di Symphony Factory APS a Bologna.",
         "type": "WebPage",
         "css": ["attivita.css"],
         "services": True,
     },
     {
+        "path": "/collabora/",
+        "file": "collabora.html",
+        "crumb": "Collabora",
+        "title": "Collabora: per enti, Comuni e partner | Symphony Factory APS",
+        "description": "Per amministrazioni, enti e fondazioni: progetti culturali e sociali per attivare spazi sottoutilizzati e restituirli alla comunità, a Bologna e dintorni.",
+        "type": "WebPage",
+    },
+    {
         "path": "/diventa-socio/",
         "file": "diventa-socio.html",
-        "crumb": "Diventa socio",
-        "title": "Diventa socio a 10 € l'anno | Symphony Factory APS",
-        "description": "Iscriviti a Symphony Factory APS: quota annuale di 10 €, accesso all'home studio, eventi e iniziative. Aperto ad artisti e sostenitori dai 14 anni.",
+        "crumb": "Partecipa",
+        "title": "Partecipa: diventa socio con 10 € | Symphony Factory",
+        "description": "Artisti, creativi e persone curiose: entra in Symphony Factory APS con 10 € l'anno. Laboratori, Home Studio, eventi e open call. Aperto dai 14 anni.",
         "type": "WebPage",
         "faq": True,
         "membership": True,
@@ -92,7 +100,7 @@ PAGES = [
         "file": "sostienici.html",
         "crumb": "Sostienici",
         "title": "Sostienici con una donazione | Symphony Factory APS",
-        "description": "Sostieni la musica emergente a Bologna con una donazione a Symphony Factory APS: i fondi finanziano nuovi progetti e i materiali dell'home studio.",
+        "description": "Sostieni Symphony Factory APS con una donazione: i fondi finanziano nuovi progetti culturali e i materiali per artisti e partecipanti a Bologna.",
         "type": "WebPage",
     },
     {
@@ -100,7 +108,7 @@ PAGES = [
         "file": "contatti.html",
         "crumb": "Contatti",
         "title": "Contatti | Symphony Factory APS Bologna",
-        "description": "Contatta Symphony Factory APS: informazioni su associazione e tesseramento a info@symphonyfactory.it, eventi e serate musicali con Maurizia al 366 182 4404.",
+        "description": "Contatta Symphony Factory APS: informazioni, partecipazione e collaborazioni a info@symphonyfactory.it, eventi e serate con Maurizia al 366 182 4404.",
         "type": "ContactPage",
     },
     {
@@ -178,11 +186,11 @@ ORG = {
         "https://www.facebook.com/SymphonyFactory",
     ],
     "knowsAbout": [
-        "Cultura musicale",
-        "Produzione musicale",
+        "Progettazione culturale",
+        "Laboratori e workshop creativi",
+        "Rigenerazione di spazi urbani",
         "Direzione artistica",
         "Eventi musicali dal vivo",
-        "Formazione musicale",
         "Artisti emergenti",
     ],
 }
@@ -197,16 +205,18 @@ WEBSITE = {
 }
 
 FAQ_HOME = [
-    ("Chi può diventare socio di Symphony Factory?",
-     "Possono associarsi tutte le persone che hanno compiuto 14 anni e condividono le finalità dell'associazione, oltre ad altri enti del Terzo settore o senza scopo di lucro. Aspettiamo sia artisti sia persone che vogliono sostenere il progetto."),
+    ("Che cos'è Symphony Factory?",
+     "È un'associazione di promozione sociale di Bologna: una realtà culturale e sociale che mette in relazione creatività, benessere e territorio, con laboratori, progetti artistici, musica, eventi e collaborazioni per dare nuova vita agli spazi della città."),
+    ("Chi può partecipare?",
+     "Artisti, creativi e chiunque voglia esprimersi e mettersi in gioco. Possono associarsi tutte le persone che hanno compiuto 14 anni e gli enti del Terzo settore o senza scopo di lucro che condividono le nostre finalità."),
     ("Quanto costa iscriversi?",
      "La quota associativa annuale è di 10 € e va versata contestualmente alla compilazione del modulo di iscrizione online."),
-    ("Che cos'è l'home studio di Symphony Factory?",
-     "È un hub artistico riservato ai soci: offriamo supporto tecnico per trasformare le idee creative in progetti musicali finiti, pronti per essere diffusi e valorizzati."),
-    ("Organizzate eventi e serate musicali?",
-     "Sì. La nostra direzione artistica crea eventi e format, anche in collaborazione con altre associazioni e realtà private. Per proporre una collaborazione contatta Maurizia al 366 182 4404 o scrivi a maurizia@symphonyfactory.it."),
+    ("Siete un ente o un Comune: come possiamo collaborare?",
+     "Scriveteci a info@symphonyfactory.it: vi mandiamo una presentazione dell'associazione e fissiamo un primo incontro per parlare di spazi da valorizzare e progetti culturali e sociali da costruire insieme."),
+    ("Organizzate ancora eventi musicali?",
+     "Sì. La musica resta una parte fondamentale della nostra identità: Home Studio per i soci, open call, serate ed eventi. Per eventi e serate contatta Maurizia al 366 182 4404."),
     ("Come posso sostenere l'associazione?",
-     "Puoi diventare socio oppure fare una donazione con bonifico intestato ad Associazione Symphony Factory APS (IBAN IT37 C084 7236 7600 0000 0121 991, causale “Donazione liberale”). Le donazioni finanziano nuovi progetti e i materiali dell'home studio."),
+     "Puoi partecipare come socio, dare una mano come volontario oppure fare una donazione con bonifico intestato ad Associazione Symphony Factory APS (IBAN IT37 C084 7236 7600 0000 0121 991, causale “Donazione liberale”)."),
 ]
 
 FAQ_SOCIO = [
@@ -214,8 +224,8 @@ FAQ_SOCIO = [
      "Tutte le persone fisiche che hanno compiuto 14 anni, senza alcuna distinzione, e gli enti del Terzo settore o senza scopo di lucro che condividono le finalità dell'associazione."),
     ("Quanto costa e quanto dura la tessera?",
      "La quota associativa è di 10 € all'anno e va versata contestualmente alla compilazione del modulo di iscrizione."),
-    ("Devo essere un musicista per associarmi?",
-     "No. Symphony Factory accoglie artisti e anche persone interessate a supportare il progetto e a partecipare alla vita dell'associazione."),
+    ("Devo essere un artista per partecipare?",
+     "No. Symphony Factory accoglie artisti, creativi e anche persone curiose che vogliono partecipare alla vita culturale dell'associazione o sostenerne i progetti."),
     ("Quando diventa effettiva l'iscrizione?",
      "La domanda viene valutata dal Consiglio Direttivo, che comunica l'esito entro 60 giorni come previsto dallo statuto."),
     ("Posso votare in assemblea?",
@@ -223,9 +233,10 @@ FAQ_SOCIO = [
 ]
 
 SERVICES = [
+    ("Laboratori, workshop e corsi", "Esperienze creative legate a linguaggi artistici differenti, aperte a persone di tutte le età."),
     ("Home Studio per i soci", "Hub artistico riservato ai soci: supporto tecnico per trasformare le idee creative in progetti musicali finiti."),
-    ("Direzione artistica di eventi e format", "Creazione di eventi e format musicali, anche in collaborazione con altre associazioni e realtà private, per valorizzare giovani artisti emergenti."),
-    ("Workshop, seminari e masterclass", "Percorsi di formazione musicale per diffondere la cultura musicale e far crescere le competenze degli artisti."),
+    ("Attivazione di spazi sottoutilizzati", "Collaborazioni con enti e comunità locali per restituire agli spazi una funzione culturale e sociale."),
+    ("Eventi e direzione artistica", "Eventi, format e open call, anche in collaborazione con altre associazioni e realtà private."),
 ]
 
 
@@ -428,6 +439,40 @@ def build_statuto():
     return "\n".join(body), "\n".join(toc_html)
 
 
+
+# ---------------------------------------------------------------- accenti per Wonderfull
+# Wonderfull non ha lettere accentate: nei titoli che lo usano la lettera base resta in Wonderfull
+# e l'accento viene disegnato in CSS (.acc), come nel manifesto della brand identity.
+ACCENTS = {"à": ("a", "g"), "è": ("e", "g"), "é": ("e", "a"), "ì": ("i", "g"), "ò": ("o", "g"), "ù": ("u", "g"),
+           "À": ("A", "g"), "È": ("E", "g"), "É": ("E", "a"), "Ì": ("I", "g"), "Ò": ("O", "g"), "Ù": ("U", "g")}
+WF_CLASSES = ("wf", "big-text", "manifesto__title", "idea__title", "marquee__group", "menu__list")
+
+
+def _acc_text(text):
+    out = []
+    for ch in text:
+        if ch in ACCENTS:
+            base, kind = ACCENTS[ch]
+            up = " acc-up" if base.isupper() else ""
+            out.append(f'<span class="acc acc-{kind}{up}" aria-hidden="true">{base}</span><span class="sr-only">{ch}</span>')
+        else:
+            out.append(ch)
+    return "".join(out)
+
+
+def accentize(doc):
+    def fix(m):
+        tag, attrs, inner = m.group(1), m.group(2), m.group(3)
+        cls = re.search(r'class="([^"]*)"', attrs)
+        classes = cls.group(1).split() if cls else []
+        if tag != "h1" and not any(c in WF_CLASSES for c in classes):
+            return m.group(0)
+        parts = re.split(r"(<[^>]+>)", inner)
+        inner = "".join(p if p.startswith("<") else _acc_text(p) for p in parts)
+        return f"<{tag}{attrs}>{inner}</{tag}>"
+    return re.sub(r"<(h1|h2|h3|p|ul|ol)\b([^>]*)>(.*?)</\1>", fix, doc, flags=re.S)
+
+
 # ---------------------------------------------------------------- assemblaggio
 def build():
     if PREVIEW:
@@ -445,6 +490,7 @@ def build():
     header = read("partials/header.html")
     footer = read("partials/footer.html")
     sprite = read("partials/sprite.svg")
+    sprite = sprite[: sprite.rfind("</svg>")] + read("partials/logo-symbol.svg") + "</svg>\n"
     cookie = read("partials/cookie.html")
     statuto_body, statuto_toc = build_statuto()
 
@@ -465,6 +511,7 @@ def build():
         content = content.replace("{{statuto_body}}", statuto_body)
         content = content.replace("{{statuto_toc}}", statuto_toc)
         content = re.sub(r"\{\{vinyl(?::([^}]*))?\}\}", lambda m: vinyl(m.group(1) or ""), content)
+        content = accentize(content)
 
         # voce di menu attiva
         def cur(m):
@@ -489,7 +536,7 @@ def build():
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="{robots}">
-{canonical}<meta name="theme-color" content="#0f0e0d">
+{canonical}<meta name="theme-color" content="#582c36">
 <meta name="author" content="Symphony Factory APS">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website">
@@ -500,14 +547,14 @@ def build():
 {og_url}<meta property="og:image" content="{SITE}/assets/img/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Logo di Symphony Factory APS con un disco in vinile che sorge sull'orizzonte">
+<meta property="og:image:alt" content="Logo di Symphony Factory APS su sfondo vinaccia, con foto di incontri e laboratori">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="preload" href="/assets/fonts/montserrat-latin-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/fraunces-italic-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/wonderfull.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/assets/fonts/dmmono-400.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.replace('no-js','js')</script>
 <style>
 {compact_css(css)}

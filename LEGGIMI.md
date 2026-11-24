@@ -53,7 +53,17 @@ Lo script genera `_anteprima/` (percorsi adattati alla sottocartella) e la caric
 
 Dopo la pubblicazione: verifica il dominio su Google Search Console e invia `https://www.symphonyfactory.it/sitemap.xml`.
 
+## Brand identity 2026/27
+
+Il sito segue il piano di comunicazione e riposizionamento 2026/27 e la brand identity ufficiale.
+
+- **Logo**: vettoriale in `sito/assets/img/logo-symphony-factory.svg` e nel simbolo `#logo` (`_sorgente/partials/logo-symbol.svg`), ricostruito dal font Wonderfull sui PNG ufficiali.
+- **Font**: Wonderfull (logo, headline, H1), National Park (H2, H3), DM Mono (testi). Wonderfull non ha accenti: nei titoli che lo usano il build disegna l'accento sopra la lettera (classe `.acc`), come nel manifesto.
+- **Palette**: Wine plum #582C36, Sand dune #EDE1CD, Ink Black #011411, Burnt Tangerine #E14630, Magenta Bloom #D13260, Baby Blue #A8D0FF.
+
 ## Da verificare con l'associazione
+
+- **Foto**: le foto vengono dal PDF del piano di comunicazione. Molte sembrano immagini di moodboard o di riferimento: vanno sostituite con foto di eventi e attività dell'associazione (o verificati i diritti) prima della pubblicazione definitiva. Le grafiche di Symphony Park e Contest Musicare 2024 riportano ancora il vecchio logo.
 
 - **CAP della sede legale**: è indicato 40134 (via Paride Pasquali, Bologna). Va confermato.
 - **Codice fiscale dell'associazione**: va aggiunto nel footer (`_sorgente/partials/footer.html`) e nei dati strutturati.
