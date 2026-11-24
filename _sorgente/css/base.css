@@ -418,9 +418,9 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 .card__more { display: inline-flex; align-items: center; gap: .5em; font-size: .8rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; margin-top: auto; }
 .card__more .i { transition: transform .4s var(--ease); }
 .card:hover .card__more .i { transform: translateX(5px); }
-.card--wine { background: var(--wine); color: var(--cream); border-color: var(--wine); }
+.card.card--wine { background: var(--wine); color: var(--cream); border-color: var(--wine); }
 .card--wine p { color: rgba(251, 245, 233, .8); }
-.card--sky { background: var(--sky); border-color: var(--sky); }
+.card.card--sky { background: var(--sky); border-color: var(--sky); }
 .card--sky p { color: var(--wine); }
 .card--photo { padding: 0; overflow: hidden; overflow: clip; background: var(--paper); }
 .card--photo .card__img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; overflow: clip; }
@@ -429,7 +429,7 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 .card--photo:hover .card__img img { transform: scale(1.05); }
 .card--photo .card__body { display: flex; flex-direction: column; gap: 12px; padding: clamp(20px, 2.4vw, 32px); flex: 1; }
 
-.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; }
+.tags { display: flex; flex-wrap: wrap; align-items: flex-start; align-content: flex-start; gap: 8px; list-style: none; }
 .tags li { font-size: .74rem; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; border: 1px solid currentColor; }
 
 /* ---------- Split ---------- */
@@ -503,7 +503,7 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 @media (max-width: 1100px) { .contact-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 600px) { .contact-cards { grid-template-columns: 1fr; } }
 .contact-card { display: grid; gap: 10px; align-content: start; padding: clamp(22px, 2.4vw, 32px); border-radius: var(--radius); background: var(--paper); border: 1px solid var(--line); }
-.contact-card .i { width: 28px; height: 28px; stroke-width: 1.4; }
+.contact-card .i { width: 54px; height: 54px; padding: 13px; border-radius: 50%; background: var(--wine); color: var(--sand); stroke-width: 1.5; }
 .contact-card h3 { font-size: 1.35rem; }
 .contact-card p { margin: 0; color: var(--wine-soft); }
 .contact-card a { font-weight: 500; overflow-wrap: anywhere; }
@@ -676,6 +676,19 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 .uses span { color: var(--wine-soft); }
 @media (max-width: 560px) { .uses li { grid-template-columns: 1fr; gap: 4px; } }
 .page-hero--404 { min-height: 100svh; display: grid; align-items: center; }
+
+/* ---------- Cosa portiamo (Collabora) ---------- */
+.offer__card { gap: 18px; padding: clamp(26px, 3vw, 44px); }
+.offer__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid currentColor; border-bottom-color: color-mix(in srgb, currentColor 22%, transparent); }
+.offer__top .card__num { font-size: clamp(3rem, 2.2rem + 2.4vw, 4.6rem); }
+.card--wine .card__num { color: var(--baby); }
+.card--sky .card__num { color: var(--wine); }
+.offer__ico { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; border: 1.5px solid currentColor; transition: transform .6s var(--ease), background-color .3s, color .3s; }
+.offer__ico .i { width: 26px; height: 26px; stroke-width: 1.4; }
+.offer__card:hover .offer__ico { transform: rotate(-10deg); }
+.offer__card h3 { font-size: clamp(1.45rem, 1.15rem + 1vw, 2rem); }
+.offer__card .tags { margin-top: 4px; }
+.card--sky .tags li, .card--wine .tags li { border-color: currentColor; }
 
 /* ---------- Allineamento: righe condivise tra card affiancate ---------- */
 @supports (grid-template-rows: subgrid) {
