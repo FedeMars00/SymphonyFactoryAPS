@@ -32,6 +32,7 @@ def rebase(text):
     if not BASE:
         return text
     text = re.sub(r'((?:href|src|data-src)=")/(?!/)', rf"\1{BASE}/", text)
+    text = re.sub(r'srcset="([^"]+)"', lambda m: 'srcset="' + re.sub(r"(^|,\s*)/(?!/)", r"\g<1>" + BASE + "/", m.group(1)) + '"', text)
     text = text.replace("url(/assets", f"url({BASE}/assets")
     text = text.replace('"href_matches":"/*"', f'"href_matches":"{BASE}/*"')
     text = text.replace('"href_matches":"/404.html"', f'"href_matches":"{BASE}/404.html"')
@@ -473,6 +474,97 @@ def accentize(doc):
     return re.sub(r"<(h1|h2|h3|p|ul|ol)\b([^>]*)>(.*?)</\1>", fix, doc, flags=re.S)
 
 
+
+# ---------------------------------------------------------------- tipografia italiana
+# Apostrofi e virgolette tipografiche, spazi non divisibili dove una riga non deve spezzarsi.
+# Si applica solo al testo visibile (non ad attributi, script, stili, SVG). Nei titoli in Wonderfull,
+# che ha solo i caratteri di base, l'apostrofo resta dritto per non mescolare due font.
+NBSP = " "
+VOID = {"img", "br", "input", "meta", "link", "hr", "source", "use", "path", "circle", "rect", "ellipse", "line", "polyline", "polygon", "wbr", "area", "col", "embed", "param", "track"}
+SKIP = {"script", "style", "svg", "code", "textarea", "pre", "title"}
+
+
+def _typo_text(t, wf):
+    if not wf:
+        t = re.sub(r"(?<=\w)'(?=\w)", "’", t)            # l'arte -> l’arte
+        t = re.sub(r'"([^"<>\n]{1,80})"', "“\\1”", t)  # "testo" -> “testo”
+    t = t.replace("...", "…")
+    t = re.sub(r"(\d) €", "\\1" + NBSP + "€", t)              # 10 € non si spezza
+    t = re.sub(r"\b(D\.Lgs\.|Art\.|art\.|artt\.|n\.) (?=\d)", "\\1" + NBSP, t)
+    t = re.sub(r"(\d+) (anni|giorni|mesi)\b", "\\1" + NBSP + "\\2", t)
+    t = re.sub(r"\b(\d{3}) (\d{3}) (\d{4})\b", "\\1" + NBSP + "\\2" + NBSP + "\\3", t)  # numeri di telefono
+    return t
+
+
+def typo(doc):
+    head, sep, body = doc.partition("<body")
+    if not sep:
+        return doc
+    parts = re.split(r"(<[^>]+>)", body)
+    stack = []  # (tag, wf)
+    skip = 0
+    out = []
+    for part in parts:
+        if part.startswith("<"):
+            m = re.match(r"<(/?)([a-zA-Z0-9]+)([^>]*)>", part)
+            if m:
+                closing, tag, attrs = m.group(1), m.group(2).lower(), m.group(3)
+                if closing:
+                    while stack:
+                        t, w = stack.pop()
+                        if t in SKIP:
+                            skip -= 1
+                        if t == tag:
+                            break
+                elif tag not in VOID and not attrs.rstrip().endswith("/"):
+                    cls = re.search(r'class="([^"]*)"', attrs)
+                    classes = cls.group(1).split() if cls else []
+                    parent_wf = stack[-1][1] if stack else False
+                    wf = parent_wf or tag == "h1" or any(c in WF_CLASSES for c in classes)
+                    stack.append((tag, wf))
+                    if tag in SKIP:
+                        skip += 1
+            out.append(part)
+        else:
+            wf = stack[-1][1] if stack else False
+            out.append(part if skip else _typo_text(part, wf))
+    return head + sep + "".join(out)
+
+
+
+# ---------------------------------------------------------------- immagini responsive
+# Per le foto con una versione leggera (-480.webp) aggiunge srcset e sizes:
+# su smartphone il browser scarica la versione piccola.
+FOTO = ROOT.parent / "sito" / "assets" / "img" / "foto"
+
+
+def responsive_imgs(doc):
+    def fix(m):
+        tag = m.group(0)
+        if "srcset=" in tag:
+            return tag
+        src = re.search(r'src="(/assets/img/foto/([^"]+)\.webp)"', tag)
+        w = re.search(r'width="(\d+)"', tag)
+        if not src or not w or not (FOTO / f"{src.group(2)}-480.webp").exists():
+            return tag
+        big, name, width = src.group(1), src.group(2), w.group(1)
+        own = re.search(r'\sdata-sizes="([^"]+)"', tag)
+        sizes = (own.group(1) if own else None) or m.group("sizes") or "(max-width: 600px) 45vw, (max-width: 1024px) 40vw, 30vw"
+        tag = re.sub(r'\sdata-sizes="[^"]+"', "", tag)
+        return tag.replace(f'src="{big}"', f'src="{big}" srcset="/assets/img/foto/{name}-480.webp 480w, {big} {width}w" sizes="{sizes}"')
+    # le immagini delle card occupano tutta la larghezza su smartphone
+    doc = re.sub(r'(?<=<div class="card__img">)<img [^>]*>', lambda m: fix(_with_sizes(m, "(max-width: 680px) 92vw, (max-width: 960px) 46vw, 30vw")), doc)
+    doc = re.sub(r"<img [^>]*>", lambda m: fix(_with_sizes(m, None)), doc)
+    return doc
+
+
+class _with_sizes:
+    def __init__(self, m, sizes):
+        self._m, self._s = m, sizes
+    def group(self, k=0):
+        return self._s if k == "sizes" else self._m.group(k)
+
+
 # ---------------------------------------------------------------- assemblaggio
 def build():
     if PREVIEW:
@@ -491,7 +583,7 @@ def build():
     footer = read("partials/footer.html")
     sprite = read("partials/sprite.svg")
     sprite = sprite[: sprite.rfind("</svg>")] + read("partials/logo-symbol.svg") + "</svg>\n"
-    cookie = read("partials/cookie.html")
+    cookie = read("partials/cookie.html") + read("partials/a11y.html")
     statuto_body, statuto_toc = build_statuto()
 
     sitemap = []
@@ -537,6 +629,7 @@ def build():
 <meta name="description" content="{desc}">
 <meta name="robots" content="{robots}">
 {canonical}<meta name="theme-color" content="#582c36">
+<meta name="color-scheme" content="only light">
 <meta name="author" content="Symphony Factory APS">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website">
@@ -555,7 +648,7 @@ def build():
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preload" href="/assets/fonts/wonderfull.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/assets/fonts/dmmono-400.woff2" as="font" type="font/woff2" crossorigin>
-<script>document.documentElement.classList.replace('no-js','js')</script>
+<script>(function(d){{d.classList.replace('no-js','js');try{{var a=JSON.parse(localStorage.getItem('sf-a11y')||'{{}}');if(a.size)d.classList.add('a11y-text-'+a.size);['contrast','readable','spacing','links','motion'].forEach(function(k){{if(a[k])d.classList.add('a11y-'+k)}})}}catch(e){{}}}})(document.documentElement)</script>
 <style>
 {compact_css(css)}
 </style>
@@ -582,7 +675,7 @@ def build():
 </body>
 </html>
 """
-        doc = rebase(doc)
+        doc = rebase(responsive_imgs(typo(doc)))
         if path == "/":
             target = OUT / "index.html"
         elif path.endswith(".html"):

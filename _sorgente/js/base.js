@@ -44,7 +44,9 @@
     if (e.key === 'Escape' && doc.classList.contains('menu-open')) { setMenu(false); toggle.focus(); }
   });
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
-  window.matchMedia('(min-width: 1021px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+  const mqDesk = window.matchMedia('(min-width: 1021px)');
+  const onDesk = (e) => { if (e.matches) setMenu(false); };
+  if (mqDesk.addEventListener) mqDesk.addEventListener('change', onDesk); else if (mqDesk.addListener) mqDesk.addListener(onDesk);
   // Mantiene il focus dentro menu + pulsante quando il menu è aperto
   document.addEventListener('focusin', (e) => {
     if (!doc.classList.contains('menu-open')) return;
@@ -238,6 +240,55 @@
     if (existing) applyConsent(existing); else setTimeout(() => openBanner(false), 600);
   }
   window.SFConsent = { get: readConsent, open: () => openBanner(true) };
+
+
+  /* ---------- Pannello accessibilità ---------- */
+  const A11Y_KEY = 'sf-a11y';
+  const panel = document.querySelector('[data-a11y]');
+  const a11yBtn = document.querySelector('[data-a11y-toggle]');
+  const OPTS = ['contrast', 'readable', 'spacing', 'links', 'motion'];
+  let a11yPrefs = {};
+  try { a11yPrefs = JSON.parse(localStorage.getItem(A11Y_KEY) || '{}'); } catch (_) { a11yPrefs = {}; }
+  const applyA11y = () => {
+    doc.classList.remove('a11y-text-1', 'a11y-text-2');
+    if (a11yPrefs.size) doc.classList.add(`a11y-text-${a11yPrefs.size}`);
+    OPTS.forEach((k) => doc.classList.toggle(`a11y-${k}`, !!a11yPrefs[k]));
+    if (!panel) return;
+    panel.querySelectorAll('[data-a11y-size]').forEach((b) => b.setAttribute('aria-pressed', String(String(a11yPrefs.size || 0) === b.dataset.a11ySize)));
+    panel.querySelectorAll('[data-a11y-opt]').forEach((b) => b.setAttribute('aria-pressed', String(!!a11yPrefs[b.dataset.a11yOpt])));
+    if (a11yPrefs.motion) document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-in'));
+  };
+  const saveA11y = () => {
+    try { localStorage.setItem(A11Y_KEY, JSON.stringify(a11yPrefs)); } catch (_) { /* storage non disponibile */ }
+    applyA11y();
+  };
+  const setPanel = (open) => {
+    if (!panel) return;
+    a11yBtn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      panel.hidden = false;
+      requestAnimationFrame(() => panel.classList.add('is-open'));
+      const first = panel.querySelector('button[aria-pressed="true"]') || panel.querySelector('button');
+      setTimeout(() => first && first.focus({ preventScroll: true }), 60);
+    } else {
+      panel.classList.remove('is-open');
+      setTimeout(() => { if (!panel.classList.contains('is-open')) panel.hidden = true; }, 350);
+    }
+  };
+  if (panel && a11yBtn) {
+    a11yBtn.addEventListener('click', () => setPanel(a11yBtn.getAttribute('aria-expanded') !== 'true'));
+    panel.querySelector('[data-a11y-close]').addEventListener('click', () => { setPanel(false); a11yBtn.focus(); });
+    panel.querySelectorAll('[data-a11y-size]').forEach((b) => b.addEventListener('click', () => { a11yPrefs.size = Number(b.dataset.a11ySize); saveA11y(); }));
+    panel.querySelectorAll('[data-a11y-opt]').forEach((b) => b.addEventListener('click', () => { a11yPrefs[b.dataset.a11yOpt] = !a11yPrefs[b.dataset.a11yOpt]; saveA11y(); }));
+    panel.querySelector('[data-a11y-reset]').addEventListener('click', () => { a11yPrefs = {}; saveA11y(); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !panel.hidden) { setPanel(false); a11yBtn.focus(); }
+    });
+    document.addEventListener('click', (e) => {
+      if (!panel.hidden && !panel.contains(e.target) && !e.target.closest('[data-a11y-toggle]')) setPanel(false);
+    });
+    applyA11y();
+  }
 
   /* ---------- Anno nel footer ---------- */
   document.querySelectorAll('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });

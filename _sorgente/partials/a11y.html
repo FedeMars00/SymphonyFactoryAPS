@@ -1,0 +1,37 @@
+<div class="dock" data-dock>
+  <button class="dock__btn" type="button" data-cookie-open aria-label="Preferenze cookie">
+    <svg class="i" aria-hidden="true"><use href="#i-cookie"/></svg>
+  </button>
+  <button class="dock__btn" type="button" aria-expanded="false" aria-controls="a11y-panel" data-a11y-toggle aria-label="Opzioni di accessibilità">
+    <svg class="i" aria-hidden="true"><use href="#i-access"/></svg>
+  </button>
+</div>
+
+<section class="a11y" id="a11y-panel" role="dialog" aria-modal="false" aria-labelledby="a11y-title" data-a11y hidden>
+  <div class="a11y__head">
+    <h2 class="a11y__title" id="a11y-title">Accessibilità</h2>
+    <button class="a11y__close" type="button" data-a11y-close aria-label="Chiudi il pannello accessibilità">
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <p class="a11y__intro">Adatta il sito a come leggi meglio. Le scelte restano salvate su questo dispositivo.</p>
+
+  <div class="a11y__group" role="group" aria-labelledby="a11y-size">
+    <p class="a11y__label" id="a11y-size">Dimensione del testo</p>
+    <div class="a11y__sizes">
+      <button type="button" data-a11y-size="0" aria-pressed="true"><span style="font-size:.9rem">A</span><span class="sr-only"> normale</span></button>
+      <button type="button" data-a11y-size="1" aria-pressed="false"><span style="font-size:1.1rem">A</span><span class="sr-only"> più grande</span></button>
+      <button type="button" data-a11y-size="2" aria-pressed="false"><span style="font-size:1.35rem">A</span><span class="sr-only"> molto più grande</span></button>
+    </div>
+  </div>
+
+  <ul class="a11y__list">
+    <li><button type="button" class="a11y__opt" data-a11y-opt="contrast" aria-pressed="false"><span><strong>Contrasto elevato</strong><small>Testi più scuri e sfondi più chiari</small></span><span class="switch" aria-hidden="true"><span></span></span></button></li>
+    <li><button type="button" class="a11y__opt" data-a11y-opt="readable" aria-pressed="false"><span><strong>Carattere più leggibile</strong><small>Un unico font senza grazie per tutto il testo</small></span><span class="switch" aria-hidden="true"><span></span></span></button></li>
+    <li><button type="button" class="a11y__opt" data-a11y-opt="spacing" aria-pressed="false"><span><strong>Più spazio tra le righe</strong><small>Interlinea e spaziatura più ampie</small></span><span class="switch" aria-hidden="true"><span></span></span></button></li>
+    <li><button type="button" class="a11y__opt" data-a11y-opt="links" aria-pressed="false"><span><strong>Evidenzia i link</strong><small>Tutti i collegamenti sottolineati</small></span><span class="switch" aria-hidden="true"><span></span></span></button></li>
+    <li><button type="button" class="a11y__opt" data-a11y-opt="motion" aria-pressed="false"><span><strong>Ferma le animazioni</strong><small>Niente movimenti, banda che scorre ferma</small></span><span class="switch" aria-hidden="true"><span></span></span></button></li>
+  </ul>
+
+  <button class="btn btn--ghost btn--sm a11y__reset" type="button" data-a11y-reset>Ripristina</button>
+</section>

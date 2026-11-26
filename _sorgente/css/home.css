@@ -3,15 +3,15 @@
    ============================================================ */
 .hero {
   position: relative; isolation: isolate; overflow: hidden; overflow: clip;
-  min-height: max(100svh, 680px);
+  min-height: max(100vh, 680px); min-height: max(100svh, 680px);
   display: grid; place-items: center;
-  padding: calc(var(--header-h) + 24px) 0 clamp(48px, 7svh, 80px);
+  padding: calc(var(--header-h) + 24px) 0 clamp(48px, 7vh, 80px); padding: calc(var(--header-h) + 24px) 0 clamp(48px, 7svh, 80px);
 }
 .hero::before {
-  content: ""; position: absolute; inset: 0; z-index: -2; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
+  content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: -2; pointer-events: none; opacity: .5; mix-blend-mode: multiply;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .17 0 0 0 0 .21 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.hero__board { position: absolute; inset: 0; z-index: 0; }
+.hero__board { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 0; }
 .hero__ph {
   position: absolute; width: var(--w); aspect-ratio: var(--ar, 3 / 4);
   left: var(--x); top: var(--y); rotate: var(--r, 0deg);
@@ -23,11 +23,18 @@
 .hero__ph.is-dragging { cursor: grabbing; rotate: 0deg; scale: 1.06; box-shadow: 0 40px 70px -28px rgba(46, 36, 12, .6); transition: scale .4s var(--ease), box-shadow .4s; }
 .js .hero__ph { opacity: 0; scale: 1.18; animation: drop .9s var(--ease) forwards; animation-delay: calc(.15s + var(--i, 0) * .09s); }
 @keyframes drop { to { opacity: 1; scale: 1; } }
+.js .hero__ph.is-in { opacity: 1; scale: 1; animation: none; }
+.js .hero__ph.is-in.is-dragging { scale: 1.06; }
+/* tocco: piccolo sobbalzo della foto e il nastro che si solleva e torna giù */
+.js .hero__ph.is-in.is-tapped { animation: ph-pop .5s var(--ease); }
+.hero__ph.is-tapped.ph--tape::before { animation: tape-flap .5s var(--ease); }
+@keyframes ph-pop { 0% { scale: 1; } 35% { scale: 1.08; } 70% { scale: .98; } 100% { scale: 1; } }
+@keyframes tape-flap { 0%, 100% { translate: -50% 0; } 40% { translate: -50% -5px; scale: 1.06 .9; } }
 
 .hero__ph:nth-child(1) { --w: 15vw; --x: 3%; --y: 15%; --r: -6deg; --ar: 3 / 4; }
 .hero__ph:nth-child(2) { --w: 13vw; --x: 10%; --y: 60%; --r: 4deg; --ar: 3 / 4; }
-.hero__ph:nth-child(3) { --w: 12vw; --x: 25%; --y: 76%; --r: -3deg; --ar: 3 / 2; }
-.hero__ph:nth-child(4) { --w: 10vw; --x: 64%; --y: 9%; --r: 6deg; --ar: 3 / 4; }
+.hero__ph:nth-child(3) { --w: 12vw; --x: 21%; --y: 80%; --r: -3deg; --ar: 3 / 2; }
+.hero__ph:nth-child(4) { --w: 9vw; --x: 86%; --y: 72%; --r: 6deg; --ar: 3 / 4; }
 .hero__ph:nth-child(5) { --w: 16vw; --x: 80%; --y: 15%; --r: 5deg; --ar: 4 / 5; }
 .hero__ph:nth-child(6) { --w: 14vw; --x: 74%; --y: 58%; --r: -4deg; --ar: 3 / 4; }
 
@@ -36,7 +43,11 @@
 .hero__title { display: grid; justify-items: center; gap: clamp(14px, 1.6vw, 22px); margin: 0; }
 .hero__title h1 { margin: 0; line-height: 0; }
 .hero__payoff { margin: 0; }
-.hero__logo { width: min(56vw, 780px); color: var(--wine); }
+.hero__logo {
+  width: min(56vw, 780px); color: var(--wine);
+  /* alone color carta: il logo resta leggibile anche sopra le foto spostate */
+  filter: drop-shadow(0 0 1.5px var(--board)) drop-shadow(0 0 6px rgba(248, 244, 236, .95)) drop-shadow(0 0 16px rgba(248, 244, 236, .75));
+}
 .js .hero__logo { opacity: 0; transform: translateY(18px) rotate(-2deg); animation: logo-in 1s var(--ease) .05s forwards; }
 @keyframes logo-in { to { opacity: 1; transform: none; } }
 .hero__payoff {
@@ -48,34 +59,44 @@
 .js .hero__fade { opacity: 0; animation: fade-up .9s var(--ease) .55s forwards; }
 @keyframes fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 .hero__hint {
-  position: absolute; z-index: 2; right: var(--gutter); bottom: 22px; margin: 0;
-  font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; opacity: .7;
+  position: absolute; z-index: 3; left: var(--gutter); bottom: 22px; margin: 0; padding: 6px 12px; border-radius: 999px;
+  background: rgba(248, 244, 236, .92); box-shadow: 0 4px 14px -6px rgba(1, 20, 17, .35);
+  font-size: .72rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
 }
-@media (pointer: coarse) { .hero__hint { display: none; } }
+@media (pointer: coarse), (max-width: 600px) {
+  .hero__hint { left: 50%; translate: -50% 0; bottom: 16px; white-space: nowrap; font-size: .66rem; }
+}
 
+@media (min-width: 901px) and (max-width: 1180px) {
+  .hero__ph:nth-child(2) { --x: 3%; }
+  .hero__ph:nth-child(6) { --w: 13vw; --x: 83%; --y: 60%; }
+  .hero__ph:nth-child(4) { --x: 88%; --y: 82%; }
+}
 @media (max-width: 900px) {
-  .hero__ph:nth-child(1) { --w: 28vw; --x: -4%; --y: 11%; }
-  .hero__ph:nth-child(2) { --w: 26vw; --x: 2%; --y: 72%; }
+  .hero__ph:nth-child(1) { --w: 22vw; --x: -7%; --y: 10%; }
+  .hero__ph:nth-child(2) { --w: 22vw; --x: -8%; --y: 82%; }
   .hero__ph:nth-child(3) { display: none; }
   .hero__ph:nth-child(4) { display: none; }
-  .hero__ph:nth-child(5) { --w: 30vw; --x: 72%; --y: 10%; }
-  .hero__ph:nth-child(6) { --w: 26vw; --x: 74%; --y: 73%; }
-  .hero__logo { width: min(84vw, 560px); }
+  .hero__ph:nth-child(5) { --w: 22vw; --x: 85%; --y: 9%; }
+  .hero__ph:nth-child(6) { --w: 22vw; --x: 86%; --y: 82%; }
+  .hero__logo { width: min(64vw, 520px); }
 }
 @media (max-width: 600px) {
-  .hero { place-items: center; min-height: max(100svh, 640px); }
-  .hero__ph { cursor: default; touch-action: auto; }
-  .hero__ph:nth-child(1) { --w: 30vw; --x: -6%; --y: 9%; }
-  .hero__ph:nth-child(2) { --w: 30vw; --x: -4%; --y: 77%; }
-  .hero__ph:nth-child(5) { --w: 32vw; --x: 72%; --y: 8%; }
-  .hero__ph:nth-child(6) { --w: 30vw; --x: 70%; --y: 78%; }
-  .hero__ctas .btn { flex: 1 1 100%; }
-  .hero__center { padding-block: 26vw; }
+  .hero { place-items: center; min-height: max(100vh, 640px); min-height: max(100svh, 640px); }
+  /* due foto sotto l'header e due agli angoli in basso: tutte e quattro visibili nella prima schermata */
+  .hero__ph:nth-child(1) { --w: 26vw; --x: -6%; --y: calc(var(--header-h) + 6px); }
+  .hero__ph:nth-child(5) { --w: 26vw; --x: 79%; --y: calc(var(--header-h) + 2px); }
+  .hero__ph:nth-child(2) { --w: 26vw; --x: -7%; --y: calc(100% - 35vw - 30px); }
+  .hero__ph:nth-child(6) { --w: 26vw; --x: 80%; --y: calc(100% - 35vw - 70px); } /* più in alto: sotto ci sono i pulsanti cookie e accessibilità */
+  /* pulsanti centrati e più stretti: ai lati restano libere le foto da prendere col dito */
+  .hero__ctas { flex-direction: column; align-items: center; }
+  .hero__ctas .btn { flex: 0 0 auto; width: min(60vw, 260px); }
+  .hero__center { padding-block: 24vw 4vw; }
 }
 
 /* ---------- Intro ---------- */
 .intro__grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(36px, 7vw, 110px); align-items: center; }
-@media (max-width: 860px) { .intro__grid { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .intro__grid { grid-template-columns: minmax(0, 1fr); } }
 .intro__text { display: grid; gap: 26px; align-content: start; }
 .intro__text .muted { max-width: 40rem; margin: 0; }
 .js .fill .w { color: rgba(89, 44, 54, .2); transition: color .5s var(--ease); }
@@ -89,11 +110,12 @@
 
 /* ---------- Che si fa ---------- */
 .doing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 5vw, 80px); }
-@media (max-width: 760px) { .doing { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { .doing { grid-template-columns: minmax(0, 1fr); } }
 .doing__item { display: grid; gap: 16px; align-content: start; padding-top: 22px; border-top: 1.5px solid var(--wine); }
 .doing__n { font-family: var(--f-display); font-size: clamp(4rem, 3rem + 4vw, 7rem); line-height: .8; color: var(--orange); }
 .doing__item h3 { font-size: var(--fs-h3); }
 .doing__item p { margin: 0; max-width: 34rem; }
+.doing__note p { max-width: 62ch; }
 .doing__note { margin-top: clamp(40px, 5vw, 64px); padding: clamp(20px, 2.4vw, 30px); border-radius: var(--radius); background: var(--paper); border: 1px dashed var(--wine-soft); max-width: 60rem; }
 .doing__note p { margin: 0; }
 @supports (grid-template-rows: subgrid) {
@@ -102,7 +124,7 @@
 
 /* ---------- Due pubblici ---------- */
 .audience { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(14px, 1.8vw, 24px); }
-@media (max-width: 860px) { .audience { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .audience { grid-template-columns: minmax(0, 1fr); } }
 .aud { display: grid; gap: 18px; align-content: start; padding: clamp(28px, 3.4vw, 52px); border-radius: var(--radius); }
 .aud--sky { background: var(--sky); color: var(--wine); }
 .aud--wine { background: var(--wine); color: var(--cream); }
@@ -118,7 +140,20 @@
 
 /* ---------- Idea (blocco azzurro) ---------- */
 .idea { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: end; }
-@media (max-width: 860px) { .idea { grid-template-columns: 1fr; } }
-.idea__title { font-family: var(--f-display); font-weight: 400; font-size: clamp(2.8rem, 1.2rem + 6vw, 7.2rem); color: var(--tangerine); line-height: .92; letter-spacing: -.02em; }
+@media (max-width: 860px) { .idea { grid-template-columns: minmax(0, 1fr); } }
+.idea__title { font-family: var(--f-display); font-weight: 400; font-size: min(clamp(2.6rem, 1.2rem + 6vw, 5.6rem), 12.5vw); color: var(--tangerine-ink); line-height: .92; letter-spacing: -.02em; }
 .idea__aside { display: grid; gap: 22px; align-content: end; }
 .idea__aside p { margin: 0; }
+
+.hint-touch { display: none; }
+@media (pointer: coarse), (max-width: 600px) { .hint-fine { display: none; } .hint-touch { display: inline; } }
+
+/* Nastro adesivo proporzionato alla foto, così resta credibile anche sulle foto piccole da smartphone */
+.hero__ph.ph--tape::before { width: clamp(40px, 44%, 96px); height: clamp(14px, 1.9vw, 26px); top: clamp(-12px, -1vw, -8px); }
+
+/* Su due colonne il titolo ha metà spazio: dimensione calibrata perché "Facciamola" resti intera */
+@media (min-width: 861px) { .idea__title { font-size: clamp(2.6rem, .6rem + 4.4vw, 6rem); } }
+
+/* dopo il primo tocco l'invito ha fatto il suo lavoro e si dissolve */
+.hero__hint { transition: opacity .6s var(--ease); }
+.hero.is-touched .hero__hint { opacity: 0; }

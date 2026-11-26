@@ -12,7 +12,7 @@
 
 .feature { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(36px, 7vw, 120px); align-items: center; }
 .feature--rev .feature__photos { order: 2; }
-@media (max-width: 900px) { .feature { grid-template-columns: 1fr; } .feature--rev .feature__photos { order: 0; } }
+@media (max-width: 900px) { .feature { grid-template-columns: minmax(0, 1fr); } .feature--rev .feature__photos { order: 0; } }
 .feature__body { display: grid; gap: 20px; align-content: start; }
 .feature__body p { margin: 0; max-width: 38rem; }
 .feature__n { font-family: var(--f-display); font-size: clamp(3.4rem, 2.6rem + 3vw, 6rem); line-height: .8; color: var(--orange); }

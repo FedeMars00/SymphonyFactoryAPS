@@ -2,8 +2,8 @@
    Statuto: indice laterale e testo leggibile
    ============================================================ */
 .statuto__grid { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
-@media (max-width: 960px) { .statuto__grid { grid-template-columns: 1fr; } }
-.toc { position: sticky; top: calc(var(--header-h) + 24px); max-height: calc(100svh - var(--header-h) - 48px); overflow: auto; overscroll-behavior: contain; }
+@media (max-width: 960px) { .statuto__grid { grid-template-columns: minmax(0, 1fr); } }
+.toc { position: sticky; top: calc(var(--header-h) + 24px); max-height: calc(100vh - var(--header-h) - 48px); max-height: calc(100svh - var(--header-h) - 48px); overflow: auto; overscroll-behavior: contain; }
 @media (max-width: 960px) { .toc { position: static; max-height: none; } }
 .toc__box { border: 1px solid var(--line); border-radius: var(--radius-s); background: var(--board); }
 .toc__box summary { cursor: pointer; list-style: none; padding: 14px 18px; font-size: .76rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; display: flex; justify-content: space-between; }
