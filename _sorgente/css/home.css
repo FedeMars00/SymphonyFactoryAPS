@@ -29,6 +29,16 @@
 .js .hero__ph.is-in.is-tapped { animation: ph-pop .5s var(--ease); }
 .hero__ph.is-tapped.ph--tape::before { animation: tape-flap .5s var(--ease); }
 @keyframes ph-pop { 0% { scale: 1; } 35% { scale: 1.08; } 70% { scale: .98; } 100% { scale: 1; } }
+/* invito periodico: sollevata appena, piccola oscillazione, poi si riappoggia */
+.js .hero__ph.is-in.is-nudge { animation: ph-nudge 1.2s var(--ease); }
+.hero__ph.is-nudge.ph--tape::before { animation: tape-flap 1.2s var(--ease); }
+@keyframes ph-nudge {
+  0% { transform: none; box-shadow: var(--shadow-photo); }
+  22% { transform: translateY(-7px) rotate(-2.2deg) scale(1.03); box-shadow: 0 36px 54px -24px rgba(46, 36, 12, .55), 0 4px 10px rgba(46, 36, 12, .14); }
+  48% { transform: translateY(-5px) rotate(1.6deg) scale(1.03); }
+  72% { transform: translateY(-1px) rotate(-.6deg) scale(1.01); }
+  100% { transform: none; }
+}
 @keyframes tape-flap { 0%, 100% { translate: -50% 0; } 40% { translate: -50% -5px; scale: 1.06 .9; } }
 
 .hero__ph:nth-child(1) { --w: 15vw; --x: 3%; --y: 15%; --r: -6deg; --ar: 3 / 4; }

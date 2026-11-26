@@ -14,6 +14,7 @@
     ph.addEventListener('animationend', (e) => {
       if (e.animationName === 'drop') ph.classList.add('is-in');
       if (e.animationName === 'ph-pop') ph.classList.remove('is-tapped');
+      if (e.animationName === 'ph-nudge') ph.classList.remove('is-nudge');
     });
     const pos = () => ({
       x: parseFloat(ph.style.getPropertyValue('--dx')) || 0,
@@ -66,4 +67,24 @@
     ph.addEventListener('pointercancel', end);
     ph.addEventListener('lostpointercapture', end);
   });
+
+  /* Invito discreto: ogni tanto una foto si solleva appena e oscilla, come se qualcuno l'avesse sfiorata.
+     Una foto alla volta, solo con il hero a schermo e la scheda attiva; smette appena l'utente tocca una foto. */
+  if (reduce || !hero) return;
+  let visible = true, last = null, timer = 0;
+  const schedule = (ms) => { clearTimeout(timer); timer = setTimeout(nudge, ms); };
+  const nudge = () => {
+    if (hero.classList.contains('is-touched')) return;
+    if (visible && !document.hidden) {
+      const pool = photos.filter((p) => p !== last && p.offsetParent !== null && p.classList.contains('is-in')
+        && !p.classList.contains('is-dragging') && !p.classList.contains('is-tapped'));
+      const ph = pool[Math.floor(Math.random() * pool.length)];
+      if (ph) { last = ph; ph.classList.remove('is-nudge'); void ph.offsetWidth; ph.classList.add('is-nudge'); }
+    }
+    schedule(4500 + Math.random() * 2500);
+  };
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([en]) => { visible = en.isIntersecting; }, { threshold: 0.35 }).observe(hero);
+  }
+  schedule(2600);
 })();
