@@ -111,8 +111,8 @@
 /* ---------- Che si fa ---------- */
 .doing { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(28px, 5vw, 80px); }
 @media (max-width: 760px) { .doing { grid-template-columns: minmax(0, 1fr); } }
-.doing__item { display: grid; gap: 16px; align-content: start; padding-top: 22px; border-top: 1.5px solid var(--wine); }
-.doing__n { font-family: var(--f-display); font-size: clamp(4rem, 3rem + 4vw, 7rem); line-height: .8; color: var(--orange); }
+.doing__item { display: grid; gap: 16px; align-content: start; padding-top: 26px; border-top: 1.5px solid var(--wine); }
+.doing__n { font-family: var(--f-display); font-size: clamp(4rem, 3rem + 4vw, 7rem); line-height: .95; color: var(--orange); }
 .doing__item h3 { font-size: var(--fs-h3); }
 .doing__item p { margin: 0; max-width: 34rem; }
 .doing__note p { max-width: 62ch; }

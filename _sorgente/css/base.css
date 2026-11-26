@@ -418,7 +418,7 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 }
 .s-paper .card { background: var(--board); }
 .card:hover { transform: translateY(-4px) rotate(-.4deg); }
-.card__num { font-family: var(--f-display); font-size: clamp(2.6rem, 2rem + 2vw, 4rem); line-height: .8; color: var(--orange); }
+.card__num { font-family: var(--f-display); font-size: clamp(2.6rem, 2rem + 2vw, 4rem); line-height: .9; color: var(--orange); }
 .card h3 { font-size: var(--fs-h3); line-height: 1.05; letter-spacing: -.03em; }
 .card p { color: var(--wine-soft); margin: 0; }
 .card__link { text-decoration: none; color: inherit; }
@@ -467,8 +467,8 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 /* ---------- Passi ---------- */
 .steps { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 44px); counter-reset: s; }
 .steps--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.step { display: grid; gap: 12px; align-content: start; padding-top: 18px; border-top: 1.5px solid currentColor; }
-.step__n { font-family: var(--f-display); font-size: 3.2rem; line-height: .8; color: var(--orange); }
+.step { display: grid; gap: 12px; align-content: start; padding-top: 22px; border-top: 1.5px solid currentColor; }
+.step__n { font-family: var(--f-display); font-size: 3.2rem; line-height: 1; color: var(--orange); }
 .step h3 { font-size: 1.45rem; letter-spacing: -.025em; line-height: 1.05; }
 .step p { margin: 0; color: var(--wine-soft); }
 .s-wine .step p { color: rgba(251, 245, 233, .8); }
@@ -655,15 +655,15 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
   @media (min-width: 861px) { .split--even > .mv { grid-template-rows: subgrid; grid-row: span 5; } }
 }
 .values { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; border-top: 1.5px solid var(--wine); }
-.values li { display: grid; gap: 10px; align-content: start; padding: 22px 18px 28px 0; }
-.values li + li { padding-left: 18px; border-left: 1px solid var(--line); }
-.values__n { font-family: var(--f-display); font-size: 2.4rem; line-height: .8; color: var(--orange); }
-.values h3 { font-size: clamp(1.45rem, 1.1rem + 1vw, 2.1rem); }
+.values li { display: grid; gap: 12px; align-content: start; padding: 26px 22px 30px 0; }
+.values li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+.values__n { font-family: var(--f-display); font-size: 2.4rem; line-height: 1; color: var(--orange); }
+.values h3 { font-size: clamp(1.3rem, .8rem + 1vw, 1.8rem); }
 .values p { margin: 0; color: var(--wine-soft); font-size: .92rem; }
 @media (max-width: 1100px) {
   .values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .values li, .values li + li { padding: 22px 18px 26px 0; border-left: 0; border-bottom: 1px solid var(--line); }
-  .values li:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--line); }
+  .values li, .values li + li { padding: 26px 22px 28px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .values li:nth-child(even) { padding-left: 22px; border-left: 1px solid var(--line); }
 }
 @media (max-width: 560px) {
   .values { grid-template-columns: minmax(0, 1fr); }
@@ -676,8 +676,9 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 
 /* ---------- Partecipa: prezzo, profili, diritti ---------- */
 .price-card { display: grid; gap: 24px; align-content: start; padding: clamp(28px, 3.6vw, 52px); border-radius: var(--radius); background: var(--wine); color: var(--cream); box-shadow: var(--shadow-photo); }
-.price-card__price { margin: 0; display: flex; align-items: flex-start; gap: .06em; font-family: var(--f-display); font-size: clamp(4rem, 2.6rem + 4vw, 6.5rem); line-height: .8; color: var(--sky); }
-.price-card__price span { font-size: 2em; }
+/* cifra grande ma proporzionata alla card: circa 100px su desktop, 70px su smartphone */
+.price-card__price { margin: 4px 0 0; display: flex; align-items: flex-start; gap: .08em; font-family: var(--f-display); font-size: clamp(2.4rem, 1.9rem + 1.6vw, 3.4rem); line-height: 1; color: var(--sky); }
+.price-card__price span { font-size: 1.8em; line-height: .9; }
 .price-card .btn { justify-self: start; }
 .profiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
 @media (max-width: 560px) { .profiles { grid-template-columns: minmax(0, 1fr); } }
@@ -701,7 +702,7 @@ html.menu-open .site-header { background: var(--wine); color: var(--cream); box-
 
 /* ---------- Cosa portiamo (Collabora) ---------- */
 .offer__card { gap: 18px; padding: clamp(26px, 3vw, 44px); }
-.offer__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid currentColor; border-bottom-color: color-mix(in srgb, currentColor 22%, transparent); }
+.offer__top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 22px; margin-bottom: 6px; border-bottom: 1px solid currentColor; border-bottom-color: color-mix(in srgb, currentColor 22%, transparent); }
 .offer__top .card__num { font-size: clamp(3rem, 2.2rem + 2.4vw, 4.6rem); }
 .card--wine .card__num { color: var(--baby); }
 .card--sky .card__num { color: var(--wine); }
